@@ -10,7 +10,13 @@
 - Yarn
 - VsCode
 
-**Useful Commands**
+**Start Development**
+
+1. `cd eprogramar-platform-web`
+2. `yarn install`
+3. `yarn start`
+
+**Another Useful Commands**
 
 ### `yarn start`
 
