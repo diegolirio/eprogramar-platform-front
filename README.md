@@ -1,9 +1,5 @@
 # e-Programar Platform Web Layer
 
-
-## To Start Development
------------------------
-
 **Requirements**
 
 - Node
@@ -37,3 +33,8 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
+## Useful Reference
+
+- [Migrando do npm](https://classic.yarnpkg.com/pt-BR/docs/migrating-from-npm/)
