@@ -1,5 +1,7 @@
 # e-Programar Platform Web Layer
 
+Read more in the [documentation](./documentation/README.md)
+
 git **Requirements**
 
 - Node
