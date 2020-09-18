@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -29,4 +25,16 @@
     }
   }
 }
+
+@import "./assets/fontawesome-free/css/all.min.css";
+@import "~bootstrap/scss/bootstrap";
+@import "./assets/scss/sb-admin-2.scss";
 </style>
+
+<script>
+import './assets/js/sb-admin-2'
+
+export default {
+  name: "App",
+}
+</script>

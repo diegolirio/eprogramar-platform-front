@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <TopNavBar />
+    <div class="d-flex flex-column">
+      <div>
+        <div class="container-fluid">
+          <img alt="Vue logo" src="../assets/logo.png" />
+        </div>
+      </div>
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import TopNavBar from "@/components/TopNavBar.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    TopNavBar,
+  },
+};
 </script>
