@@ -1,4 +1,4 @@
 # Documentation
 
 - [Roadmap](./Roadmap.md)
-- [Requisitos da Ideia](./idea-requirements.md)
+- [Requisitos da Ideia](./Requirements.md)
