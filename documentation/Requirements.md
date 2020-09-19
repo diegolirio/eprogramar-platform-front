@@ -22,7 +22,7 @@ Para não não perder o foco no **MVP** pensando em muitas coisas, vamos seguir 
 ## Regras de negócio
 ---------------------
 
-- [ ] **Login estático:** Para validar o login deve ser usado uma estrutura de dados estática no Front-and. Criar uma lista de usuários e suas senhas no Front-and até que sejá criado a primeira versão de Back-end. Após a autenticação do usuário deve acontecer um redirecionamento para a página de **Dash**.
+- [ ] **Login estático:** Para validar o login deve ser usado uma estrutura de dados estática no Front-end. Criar uma lista de usuários e suas senhas no Front-and até que sejá criado a primeira versão de Back-end. Após a autenticação do usuário deve acontecer um redirecionamento para a página de **Dash**.
 - [ ] **Dash de Cursos:**  A página de **Dash** deve listar os Cursos que o usuário logado está inscrito. Criar uma visualização no formato de Cards com um imagem e u título. O click do Card deve levar para a pagina de **Class Room**.
 - [ ] **Sala de Aula:** A pagina de **Class Room** de ter uma barra superior que exiba o usuário logado o canto direito com um Dropdown que exibe um Nome do usuário e uma opção de Logoff. Deve ter uma **Sidebar** do lado esquerdo com o nome do Curso e um Dropdown que exiba a lista de **módulos** do Curso. O onChange de Modulos deve exibir logo abaixo o **couteúdo** do Módulo que pode ser uma aula em Video ou um arquivo Markdown onde pode ser possivel tem um conteúdo teórico.
 
