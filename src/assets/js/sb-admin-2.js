@@ -4,7 +4,7 @@ window.onload = function() {
     console.log($)
     console.log("Commons init")
     // Toggle the side navigation
-    $("#sidebarToggle, #sidebarToggleTop").on('click', () => {
+    $("#sidebarToggle").on('click', () => {
       $("body").toggleClass("sidebar-toggled");
       $(".sidebar").toggleClass("toggled");
       if ($(".sidebar").hasClass("toggled")) {
