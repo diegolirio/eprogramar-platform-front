@@ -5,36 +5,33 @@ Read more in the [documentation](./documentation/README.md)
 git **Requirements**
 
 - Node
-- Yarn
+- Npm
 - VsCode
 
-**Start Development**
+# eprogramar-platform-web
 
-1. `cd eprogramar-platform-web`
-2. `yarn install`
-3. `yarn start`
+## Project setup
+```
+npm install
+```
 
-**Another Useful Commands**
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-### `yarn start`
+### Compiles and minifies for production
+```
+npm run build
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Lints and fixes files
+```
+npm run lint
+```
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ## Useful Reference
