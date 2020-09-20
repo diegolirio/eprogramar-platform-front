@@ -3,7 +3,7 @@
     <div id="wrapper" class="h-100">
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column h-100">
-        <main id="content">
+        <main id="content container">
           <TopNavBar />
           <div class="container-fluid">
             <img alt="Vue logo" src="../assets/logo.png" />

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow navbar-top">
     <!-- Sidebar Toggle (Topbar) -->
     <button
       v-if="hasSideBar"
@@ -9,45 +9,37 @@
       <i class="fa fa-bars"></i>
     </button>
 
-    <!-- <div class="nav-item" v-for="menu in menus" :key="menu.order">
-      <router-link class="nav-link" :to="menu.route">{{menu.name}}</router-link>
-    </div>-->
-    <!-- <div class="nav-item">
-      <router-link class="nav-link" to="/">
-        <img class="img-profile rounded-circle" src="../assets/logo-eprogramar.png" alt="Logo do eprogramar">
-      </router-link>
-    </div> -->
-    <!-- <div class="nav-item">
-      <router-link class="nav-link" to="/Login">Login</router-link>
-    </div>-->
+    <div>
+      <i class="far fa-fw fa-play-circle"></i>
+      <span class="ml-2 d-lg-inline text-gray-600">02. Instalar ambiente</span>
+    </div>
 
-    <!-- Topbar Navbar -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Nav Item - Alerts -->
-      <li class="nav-item dropdown no-arrow mx-1">
-        <TopNavBarAlert />
-      </li>
-
-      <!-- Nav Item - Messages -->
-      <li class="nav-item dropdown no-arrow mx-1">
-        <TopNavBarMessage />
-      </li>
-
-      <div class="topbar-divider d-none d-sm-block"></div>
-
-      <!-- Nav Item - User Information -->
-      <li class="nav-item dropdown no-arrow">
-        <TopNavBarUserContext />
-      </li>
-    </ul>
+    <a href="#" class="btn btn-primary btn-icon-split btn-lg button-proxima-aula">
+      <span class="icon text-white-50">
+        <i class="fas fa-arrow-circle-right"></i>
+      </span>
+      <span class="text">Próxima Aula</span>
+    </a>
   </nav>
 </template>
 
-<script>
-import TopNavBarUserContext from "./TopNavBarUserContext";
-import TopNavBarMessage from "./TopNavBarMessage";
-import TopNavBarAlert from "./TopNavBarAlert";
+<style lang="scss" scoped>
+.navbar-top {
+  display: flex;
+  justify-content: space-around;
 
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
+}
+
+.button-proxima-aula {
+  background-color: #6d3396 !important;
+  border-color: #6d3396 !important;
+}
+</style>
+
+<script>
 let toggleTopSideBar = () => {
   window.$("body").toggleClass("sidebar-toggled");
   window.$(".sidebar").toggleClass("toggled");
@@ -58,11 +50,7 @@ let toggleTopSideBar = () => {
 
 export default {
   name: "TopNavBar",
-  components: {
-    TopNavBarUserContext,
-    TopNavBarMessage,
-    TopNavBarAlert,
-  },
+  components: {},
   props: {
     hasSideBar: {
       type: Boolean,

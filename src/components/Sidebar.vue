@@ -18,23 +18,23 @@
 
     <div class="lesson-heading">
       <div class="lesson-heading__number">
-        <small>Aula</small>
+        <small>Módulo</small>
         <span>13</span>
       </div>
-      <div class="lesson-heading__description">descrição da aula</div>
+      <div class="lesson-heading__description">descrição do Módulo</div>
     </div>
 
     <!-- Divider -->
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
-    <div class="sidebar-heading">Atividades</div>
+    <div class="sidebar-heading">Conteúdo</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link" href="#">
         <i class="far fa-fw fa-file-alt"></i>
-        <span>Instalar ambiente</span>
+        <span>01. Instalar ambiente</span>
       </a>
     </li>
 
@@ -42,7 +42,7 @@
     <li class="nav-item">
       <a class="nav-link" href="#">
         <i class="far fa-fw fa-play-circle"></i>
-        <span>Instalar ambiente</span>
+        <span>02. Instalar ambiente</span>
       </a>
     </li>
 
@@ -50,7 +50,7 @@
     <li class="nav-item">
       <a class="nav-link" href="#">
         <i class="fab fa-fw fa-youtube"></i>
-        <span>Instalar ambiente</span>
+        <span>03. Instalar ambiente</span>
       </a>
     </li>
 
@@ -58,10 +58,24 @@
     <li class="nav-item">
       <a class="nav-link" href="#">
         <i class="far fa-fw fa-file-alt"></i>
-        <span>Instalar ambiente</span>
+        <span>04. Instalar ambiente</span>
       </a>
     </li>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block other-modules__line" />
+
+    <div class="sidebar-heading other-modules__title">Módulos</div>
+
+    <div class="other-modules">
+      <select class="other-modules__select">
+        <option>13. descrição do módulo</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
 
@@ -74,13 +88,36 @@
 
 <style lang="scss" scoped>
 .bg-gradient-eprogramar {
-  background-color: #007bff;
+  background-color: #6d3396;
   background-image: linear-gradient(180deg, #6d3396 10%, #37005d 100%);
   background-size: cover;
 }
 
 .logo-sidebar {
   height: 45px;
+}
+
+.other-modules {
+  height: 56px;
+  margin-bottom: 5px;
+  padding: 16px;
+
+  &__select {
+    width: 100%;
+  }
+
+  .sidebar.toggled &,
+  .sidebar.toggled &__title,
+  .sidebar.toggled &__line {
+    display: none !important;
+  }
+
+  @media (max-width: 768px) {
+    &,
+    &__title {
+      display: none;
+    }
+  }
 }
 
 .lesson-heading {

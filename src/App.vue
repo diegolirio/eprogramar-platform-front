@@ -12,6 +12,10 @@
   text-align: center;
   color: #2c3e50;
 }
+.container-fluid {
+  width: 80% !important;
+  max-width: 895.5px;
+}
 html, body {
   height: 100%
 }
