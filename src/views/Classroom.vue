@@ -7,7 +7,15 @@
         <main id="content">
           <TopNavBar :has-side-bar="true" />
           <div class="container-fluid">
-            <img alt="Vue logo" src="../assets/logo.png" />
+            <iframe
+              width="900"
+              height="500"
+              class="video-exposed"
+              src="https://www.youtube.com/embed/9ysYuVJSKAQ"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </div>
         </main>
 
@@ -23,6 +31,12 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+.video-exposed {
+  margin-top: 45px;
+}
+</style>
+
 <script>
 // @ is an alias to /src
 import TopNavBar from "@/components/TopNavBar.vue";
@@ -36,7 +50,7 @@ export default {
     TopNavBar,
     Sidebar,
     TopNavBarLogoutModal,
-    Footer
+    Footer,
   },
 };
 </script>
