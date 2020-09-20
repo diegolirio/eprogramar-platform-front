@@ -30,6 +30,18 @@
 
   @media (max-width: 768px) {
     justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    height: auto;
   }
 }
 

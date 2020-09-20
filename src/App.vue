@@ -15,6 +15,12 @@
 .container-fluid {
   width: 80% !important;
   max-width: 895.5px;
+
+  @media (max-width: 600px) {
+    & {
+      width: 100% !important;
+    }
+  }
 }
 html, body {
   height: 100%
