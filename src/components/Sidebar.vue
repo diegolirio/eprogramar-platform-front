@@ -1,14 +1,20 @@
 <template>
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul
+    class="navbar-nav bg-gradient-eprogramar sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+  >
     <!-- Sidebar - Brand -->
+    <div class="nav-item">
+      <router-link class="nav-link" to="/"></router-link>
+    </div>
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">
-        SB Admin
-        <sup>2</sup>
-      </div>
+      <img
+        class="sidebar-brand-icon"
+        style="height: 45px"
+        src="../assets/logo-eprogramar.png"
+        alt="Logo do eprogramar"
+      />
+      <div class="sidebar-brand-text mx-3">Nome do Curso</div>
     </a>
 
     <!-- Divider -->
@@ -143,7 +149,34 @@
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      <button class="rounded-circle border-0" @click="toggleSidebar()" id="sidebarToggle"></button>
     </div>
   </ul>
 </template>
+
+<style lang="scss" scoped>
+.bg-gradient-eprogramar {
+  background-color: #007bff;
+  background-image: linear-gradient(180deg, #6D3396 10%, #37005D 100%);
+  background-size: cover;
+}
+</style>
+
+<script>
+// Toggle the side navigation
+
+let toggleSidebar = () => {
+  window.$("body").toggleClass("sidebar-toggled");
+  window.$(".sidebar").toggleClass("toggled");
+  if (window.$(".sidebar").hasClass("toggled")) {
+    window.$(".sidebar .collapse").collapse("hide");
+  }
+};
+
+export default {
+  name: "Sidebar",
+  methods: {
+    toggleSidebar: toggleSidebar,
+  },
+};
+</script>

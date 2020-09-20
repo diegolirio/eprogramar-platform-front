@@ -12,11 +12,11 @@
     <!-- <div class="nav-item" v-for="menu in menus" :key="menu.order">
       <router-link class="nav-link" :to="menu.route">{{menu.name}}</router-link>
     </div>-->
-    <div class="nav-item">
+    <!-- <div class="nav-item">
       <router-link class="nav-link" to="/">
         <img class="img-profile rounded-circle" src="../assets/logo-eprogramar.png" alt="Logo do eprogramar">
       </router-link>
-    </div>
+    </div> -->
     <!-- <div class="nav-item">
       <router-link class="nav-link" to="/Login">Login</router-link>
     </div>-->

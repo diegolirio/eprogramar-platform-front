@@ -3,7 +3,6 @@
     <div id="wrapper">
       <Sidebar />
 
-      <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
         <main id="content">
           <TopNavBar :has-side-bar="true" />
@@ -16,12 +15,10 @@
       </div>
     </div>
 
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
     <TopNavBarLogoutModal />
   </div>
 </template>
