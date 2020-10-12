@@ -1,5 +1,5 @@
 <template>
-  <footer class="sticky-footer mt-auto bg-white">
+  <footer class="sticky-footer mt-auto bg-default">
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
         <span>Copyright &copy; e-Programar 2020</span>

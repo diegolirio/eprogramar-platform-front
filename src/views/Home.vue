@@ -6,7 +6,7 @@
         <main id="content container">
           <TopNavBar />
           <div class="container-fluid">
-            <img alt="Vue logo" src="../assets/logo.png" />
+            <p>TODO: Cards Courses</p>
           </div>
         </main>
 

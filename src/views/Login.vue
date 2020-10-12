@@ -67,6 +67,7 @@
 <script>
 import Auth from '../services/auth';
 import Course from '../services/course';
+import router from '../router/index';
 export default {
   data() {
     return {
@@ -85,8 +86,10 @@ export default {
 
         Course.getAllCourses().then(response => {
           console.log(response.data);
-        });
-      });
+        }).then( () => {
+          router.push('/');
+        })
+      }).then
     }
   }
 }
