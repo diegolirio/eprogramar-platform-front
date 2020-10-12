@@ -88,8 +88,8 @@
 
 <style lang="scss" scoped>
 .bg-gradient-eprogramar {
-  background-color: #6d3396;
-  background-image: linear-gradient(180deg, #6d3396 10%, #37005d 100%);
+  background-color: #49007C;
+  background-image: linear-gradient(180deg, #49007C 10%, #37005d 100%);
   background-size: cover;
 }
 
