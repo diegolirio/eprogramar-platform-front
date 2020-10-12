@@ -5,7 +5,11 @@
         
         <div class="d-flex justify-content-center">
 					<div class="brand_logo_container">
-						<img src="../assets/logo-eprogramar.png" class="brand_logo" alt="Logo">
+            <Loading v-show="showLoading" />
+						<img src="../assets/logo-eprogramar.png" 
+                 class="brand_logo" 
+                 v-show="!showLoading"
+                 alt="Logo e-Programar">
 					</div>
 				</div>
         
@@ -65,21 +69,27 @@
 </template>
 
 <script>
+import Loading from '../components/Loading';
 import Auth from '../services/auth';
 import Course from '../services/course';
 import router from '../router/index';
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
       login: {
         email: '',
         password: ''
-      }
+      },
+      showLoading: false,
     }
   },
   methods: {
     onSubmit() {
       console.log(`email: ${this.login.email}, password: ${this.login.password}`);
+      this.showLoading = true;
       Auth.signin(this.login.email, this.login.password).then(response => {
         console.log(response.data.token);
         localStorage.setItem('TOKEN', response.data.token);
@@ -87,9 +97,11 @@ export default {
         Course.getAllCourses().then(response => {
           console.log(response.data);
         }).then( () => {
+          this.showLoading = false;
           router.push('/');
-        })
-      }).then
+        });
+        
+      });
     }
   }
 }
