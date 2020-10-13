@@ -23,6 +23,9 @@ const routes = [
   {
     path: '/classroom',
     name: 'Classroomm',
+    meta: {
+      requiresAuth: true,
+    },
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Classroom.vue'),
   },

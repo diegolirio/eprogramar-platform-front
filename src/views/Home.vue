@@ -6,7 +6,45 @@
         <main id="content container">
           <TopNavBar />
           <div class="container-fluid">
-            <p>TODO: Cards Courses</p>
+
+          <div class="row">
+            
+            <div class="col-4">
+              <div class="card">
+                <img src="https://www.eprogramar.com.br/assets/images/slider-1.png" class="card-img-top" alt="Tumbnail Curso">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>   
+
+            <div class="col-4">
+              <div class="card">
+                <img src="https://www.eprogramar.com.br/assets/images/slider-2.png" class="card-img-top" alt="Tumbnail Curso">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>  
+                     
+            <div class="col-4">
+              <div class="card">
+                <img src="https://www.eprogramar.com.br/assets/images/slider-3.png" class="card-img-top" alt="Tumbnail Curso">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>  
+
+
+          </div>  
+          
           </div>
         </main>
 
@@ -25,9 +63,12 @@
 </template>
 
 <style lang="scss" scoped>
-main {
-  min-height: 768px;
-}
+  main {
+    min-height: 768px;
+  }
+  .card img {
+    height: 210px;
+  }
 </style>
 
 <script>
