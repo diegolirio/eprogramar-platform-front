@@ -34,6 +34,9 @@ main {
 import TopNavBar from "@/components/TopNavBar.vue";
 import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
+import storage from "../services/storage";
+
+console.log(`existUser = ${storage.isLoggedIn()}`)
 
 export default {
   name: "Home",

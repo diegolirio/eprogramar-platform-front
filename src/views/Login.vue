@@ -73,6 +73,8 @@ import Loading from '../components/Loading';
 import Auth from '../services/auth';
 import Course from '../services/course';
 import router from '../router/index';
+import storage from '../services/storage';
+
 export default {
   components: {
     Loading
@@ -90,18 +92,25 @@ export default {
     onSubmit() {
       console.log(`email: ${this.login.email}, password: ${this.login.password}`);
       this.showLoading = true;
-      Auth.signin(this.login.email, this.login.password).then(response => {
-        console.log(response.data.token);
-        localStorage.setItem('TOKEN', response.data.token);
+      Auth.signin(this.login.email, this.login.password)
+        .then(response => {
+          console.log(response.data.token);
+          storage.saveToken(response.data.token);      
+          storage.saveCurrentUser(this.login.email);    
 
-        Course.getAllCourses().then(response => {
-          console.log(response.data);
-        }).then( () => {
+          // TODO send courses to Home Page or Load Courses into Home Page
+          Course.getAllCourses().then(response => {
+            console.log(response.data);
+          }).then( () => {
+            this.showLoading = false;
+            router.push('/');
+          });
+
+        }).catch(error => {
           this.showLoading = false;
-          router.push('/');
-        });
-        
-      });
+          console.error('Error at Authorization Auth API');
+          alert(error);
+        })
     }
   }
 }
