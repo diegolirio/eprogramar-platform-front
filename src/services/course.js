@@ -1,7 +1,11 @@
 import { http } from './config';
 
 export default {
-  getAllCourses: () => {
-    return http.get('courses');
+  getAllCourses: async () => {
+    return await http.get('courses');
+  },
+  getCoursesByUser: async (email) => {
+    console.log(`getCoursesByUser(${email})...`);
+    return await http.get(`users/${email}/courses`);
   },
 };

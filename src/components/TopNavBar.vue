@@ -46,8 +46,8 @@
 }
 
 .button-proxima-aula {
-  background-color: #6d3396 !important;
-  border-color: #6d3396 !important;
+  background-color: #49007c !important;
+  border-color: #49007c !important;
 }
 </style>
 

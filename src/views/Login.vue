@@ -71,7 +71,6 @@
 <script>
 import Loading from '../components/Loading';
 import Auth from '../services/auth';
-import Course from '../services/course';
 import router from '../router/index';
 import storage from '../services/storage';
 
@@ -97,15 +96,15 @@ export default {
           console.log(response.data.token);
           storage.saveToken(response.data.token);      
           storage.saveCurrentUser(this.login.email);    
-
+					this.showLoading = false;
+					router.push('/');
           // TODO send courses to Home Page or Load Courses into Home Page
-          Course.getAllCourses().then(response => {
-            console.log(response.data);
-          }).then( () => {
-            this.showLoading = false;
-            router.push('/');
-          });
-
+          // Course.getAllCourses().then(response => {
+          //   console.log(response.data);
+          // }).then( () => {
+          //   this.showLoading = false;
+          //   router.push('/');
+          // });
         }).catch(error => {
           this.showLoading = false;
           console.error('Error at Authorization Auth API');

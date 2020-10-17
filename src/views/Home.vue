@@ -7,44 +7,17 @@
           <TopNavBar />
           <div class="container-fluid">
 
-          <div class="row">
-            
-            <div class="col-4">
-              <div class="card">
-                <img src="https://www.eprogramar.com.br/assets/images/slider-1.png" class="card-img-top" alt="Tumbnail Curso">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+            <div class="card" v-for="course in this.courses" :key="course.id">
+              <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course" alt="Curso">
+              <div class="card-body">
+                <h5 class="card-title">{{course.name}}</h5>
+                <a @click="playCourse(course._id)" class="btn btn-primary">
+                  <i class="fas fa-play"></i> 
+                  Assistir Curso
+                </a>
               </div>
-            </div>   
+            </div>
 
-            <div class="col-4">
-              <div class="card">
-                <img src="https://www.eprogramar.com.br/assets/images/slider-2.png" class="card-img-top" alt="Tumbnail Curso">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>  
-                     
-            <div class="col-4">
-              <div class="card">
-                <img src="https://www.eprogramar.com.br/assets/images/slider-3.png" class="card-img-top" alt="Tumbnail Curso">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>  
-
-
-          </div>  
-          
           </div>
         </main>
 
@@ -66,8 +39,22 @@
   main {
     min-height: 768px;
   }
+  .card {
+    margin: 20px;
+  }
   .card img {
     height: 210px;
+    width: 450px;
+  }
+  .btn-primary {
+    background-color: #49007c !important;
+    border-color: #49007c !important;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: #7b2bb4 !important;
+    border-color: #49007c !important;
+    color: #fff;
   }
 </style>
 
@@ -76,6 +63,7 @@ import TopNavBar from "@/components/TopNavBar.vue";
 import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
 import storage from "../services/storage";
+import Course from '../services/course';
 
 console.log(`existUser = ${storage.isLoggedIn()}`)
 
@@ -86,5 +74,26 @@ export default {
     TopNavBarLogoutModal,
     Footer
   },
+  data() {
+    return {
+      courses: [],
+    }
+  },
+  beforeMount() {
+    this.getCourses()
+  },
+  methods: {
+    getCourses() {
+      console.log("getCourses()...");
+      Course.getCoursesByUser(storage.getCurrentUser()).then(response => {
+        console.log(response.data);
+        this.courses = response.data;
+      });
+    },
+    playCourse(id) {
+      console.log(`id: ${id}`);
+      this.$router.push(`/classroom/${id}`);
+    }
+  }
 };
 </script>

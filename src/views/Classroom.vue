@@ -56,11 +56,20 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   name: "Classroom",
+  data() {
+    return {
+      courseId: ''
+    }
+  },
   components: {
     TopNavBar,
     Sidebar,
     TopNavBarLogoutModal,
     Footer,
   },
+  created() {
+    this.courseId = this.$route.params.courseId 
+    console.log('id', this.courseId);
+  }
 };
 </script>

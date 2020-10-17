@@ -11,6 +11,9 @@ export default {
   saveCurrentUser: (currentUser) => {
     localStorage.setItem(CURRENT_USER_KEY, currentUser);
   },
+  getCurrentUser: () => {
+    return localStorage.getItem(CURRENT_USER_KEY);
+  },
   isLoggedIn: () => {
     return localStorage.getItem(CURRENT_USER_KEY) !== null;
   },
