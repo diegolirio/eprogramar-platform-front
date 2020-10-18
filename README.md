@@ -7,33 +7,22 @@ git **Requirements**
 - Node
 - Npm
 - VsCode
-
-# eprogramar-platform-web
+- Vue.js
+- Bootstrap 4
 
 ## Project setup
-```
-npm install
-```
+----------------
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- After clone repository: `npm install`
+- Compiles and hot-reloads for development: `npm run serve`
+- Compiles and minifies for production: `npm run build`
+- Lints and fixes files: `npm run lint`
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Testing API using Collection Postman
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/bff23ffc43466134cbc3)
 
 ## Useful Reference
 
-- [Migrando do npm](https://classic.yarnpkg.com/pt-BR/docs/migrating-from-npm/)
+- [Migrate npm to yarn](https://classic.yarnpkg.com/pt-BR/docs/migrating-from-npm/)
+- [Configuration Reference](https://cli.vuejs.org/config/).

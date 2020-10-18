@@ -1,4 +1,5 @@
 # Documentation
 
-- [Roadmap](./Roadmap.md)
-- [Requisitos da Ideia](./Requirements.md)
+- [Use Cases](usecase/README.md)
+- [Roadmap](Roadmap.md)
+- [Requisitos da Ideia](Requirements.md)
