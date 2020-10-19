@@ -3,10 +3,8 @@
     
     <div class="container">
 
-      <div>
-            <a href="/" class="navbar-brand">
-              E-Programar LOGO
-            </a>    
+      <div class="logo">
+          <router-link :to="{ path: '/' }" class="navbar-brand">E-Programar LOGO</router-link>    
       </div>
 
       <ul class="navbar-nav ml-auto">
@@ -19,14 +17,12 @@
                 <img class="img-profile rounded-circle" src="../assets/logo.png">
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
+                <router-link class="dropdown-item" :to="{ path: '/profile' }">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Perfil
+                </router-link>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                <a class="dropdown-item" href v-on:click.prevent="logout" >
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
                 </a>
               </div>
             </li>
@@ -67,7 +63,7 @@
 </style>
 
 <script>
-
+import storage from '../services/storage';
 export default {
   name: "TopNavBar",
   components: {},
@@ -88,7 +84,10 @@ export default {
     };
   },
   methods: {
-    
+    logout() {
+        storage.logout();
+        this.$router.go();
+    }
   },
 };
 </script>
