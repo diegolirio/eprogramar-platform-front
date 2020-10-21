@@ -42,7 +42,9 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "babel-eslint",
+      "ecmaVersion": 2017,
+      "sourceType": "module"
     },
     "rules": {
       "quotes": [
