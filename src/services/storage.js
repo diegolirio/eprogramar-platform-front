@@ -17,4 +17,7 @@ export default {
   isLoggedIn: () => {
     return localStorage.getItem(CURRENT_USER_KEY) !== null;
   },
+  logout: () => {
+    localStorage.clear();
+  }
 };
