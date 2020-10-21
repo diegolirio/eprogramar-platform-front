@@ -53,12 +53,14 @@ import TopNavBar from "@/components/TopNavBar.vue";
 import Sidebar from "@/components/Sidebar.vue";
 import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
+import Course from '../services/course';
 
 export default {
   name: "Classroom",
   data() {
     return {
-      courseId: ''
+      courseId: '',
+      course: ''
     }
   },
   components: {
@@ -70,6 +72,16 @@ export default {
   created() {
     this.courseId = this.$route.params.courseId 
     console.log('id', this.courseId);
+    this.getCourse(this.courseId);
+  },
+  methods: {
+    getCourse(id) {
+      console.log(`getCourse(${id})...`);
+      Course.getCoursesById(id).then(response => {
+        console.log('course', response.data);
+        this.course = response.data;
+      });
+    },
   }
 };
 </script>
