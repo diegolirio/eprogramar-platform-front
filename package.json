@@ -42,9 +42,24 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "babel-eslint",
+      "ecmaVersion": 2017,
+      "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
   },
   "browserslist": [
     "> 1%",

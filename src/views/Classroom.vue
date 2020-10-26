@@ -1,7 +1,7 @@
 <template>
   <div id="page-top">
     <div id="wrapper">
-      <Sidebar />
+      <Sidebar v-bind:currentCourse="this.currentCourse" v-bind:currentSection="this.currentSection" />
 
       <div id="content-wrapper" class="d-flex flex-column">
         <main id="content">
@@ -53,12 +53,15 @@ import TopNavBar from "@/components/TopNavBar.vue";
 import Sidebar from "@/components/Sidebar.vue";
 import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
+import Course from '../services/course';
 
 export default {
   name: "Classroom",
   data() {
     return {
-      courseId: ''
+      courseId: '',
+      currentCourse: {},
+      currentSection: {}
     }
   },
   components: {
@@ -70,6 +73,17 @@ export default {
   created() {
     this.courseId = this.$route.params.courseId 
     console.log('id', this.courseId);
+    this.getCourse(this.courseId);
+  },
+  methods: {
+    getCourse(id) {
+      console.log(`getCourse(${id})...`);
+      Course.getCoursesById(id).then(response => {
+        console.log('course', response.data);
+        this.currentCourse = response.data;
+        this.currentSection = this.currentCourse.sections[0];
+      });
+    },
   }
 };
 </script>
