@@ -1,7 +1,7 @@
 <template>
   <div id="page-top">
     <div id="wrapper">
-      <Sidebar />
+      <Sidebar v-bind:currentCourse="this.currentCourse" v-bind:currentSection="this.currentSection" />
 
       <div id="content-wrapper" class="d-flex flex-column">
         <main id="content">
@@ -60,7 +60,8 @@ export default {
   data() {
     return {
       courseId: '',
-      course: ''
+      currentCourse: {},
+      currentSection: {}
     }
   },
   components: {
@@ -79,7 +80,8 @@ export default {
       console.log(`getCourse(${id})...`);
       Course.getCoursesById(id).then(response => {
         console.log('course', response.data);
-        this.course = response.data;
+        this.currentCourse = response.data;
+        this.currentSection = this.currentCourse.sections[0];
       });
     },
   }
