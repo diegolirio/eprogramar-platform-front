@@ -1,29 +1,56 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import storage from '../services/storage';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    meta: {
+      requiresAuth: true,
+    },
+    component: Home,
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Login.vue'),
   },
   {
-    path: '/classroom',
+    path: '/classroom/:courseId',
     name: 'Classroomm',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Classroom.vue')
-  }
-]
+    meta: {
+      requiresAuth: true,
+    },
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Classroom.vue'),
+  },
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach()...');
+  console.log(from);
+  console.log(to);
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    console.log(`isLogedIn = ${storage.isLoggedIn()}`);
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!storage.isLoggedIn()) {
+      next({ name: 'Login' });
+    } else {
+      next(); // go to wherever I'm going
+    }
+  } else {
+    next(); // does not require auth, make sure to always call next()!
+  }
+});
+
+export default router;

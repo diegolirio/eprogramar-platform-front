@@ -1,0 +1,13 @@
+{
+  // The rest of your ESLint config...
+  "ignorePatterns": [ 
+    "**/src/assets/*",
+    "**/src/assets/*.js"
+  ],
+  "extends": "plugin:vue/base" ,
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  }
+}

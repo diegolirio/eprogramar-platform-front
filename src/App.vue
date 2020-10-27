@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="h-100">
     <router-view/>
   </div>
 </template>
@@ -12,18 +12,18 @@
   text-align: center;
   color: #2c3e50;
 }
+.container-fluid {
+  width: 80% !important;
+  max-width: 895.5px;
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  @media (max-width: 600px) {
+    & {
+      width: 100% !important;
     }
   }
+}
+html, body {
+  height: 100%
 }
 
 @import "./assets/fontawesome-free/css/all.min.css";
