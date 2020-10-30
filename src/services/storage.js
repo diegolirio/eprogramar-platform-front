@@ -19,5 +19,5 @@ export default {
   },
   logout: () => {
     localStorage.clear();
-  }
+  },
 };

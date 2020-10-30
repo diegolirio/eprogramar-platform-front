@@ -4,7 +4,11 @@
     <div class="container">
 
       <div class="logo">
-          <router-link :to="{ path: '/' }" class="navbar-brand">E-Programar LOGO</router-link>    
+          <router-link :to="{ path: '/' }" class="navbar-brand">
+            <img src="../../public/eprogramar-nome.png" 
+                 alt="Logo e-Programar Circle"
+                 height="50px">
+          </router-link>    
       </div>
 
       <ul class="navbar-nav ml-auto">
@@ -35,6 +39,12 @@
 </template>
 
 <style lang="scss" scoped>
+
+.logo {
+  margin-left: -12rem;
+  padding-left: 0;
+}
+
 .navbar-top {
   display: flex;
   justify-content: space-around;
@@ -75,7 +85,7 @@ export default {
     },
   },
   data: () => {
-    return {
+    return {      
       menus: [
         { name: "Home", route: "/", order: 1 },
         { name: "Classroom", route: "/classroom", order: 2 },
@@ -87,7 +97,7 @@ export default {
     logout() {
         storage.logout();
         this.$router.go();
-    }
+    },
   },
 };
 </script>

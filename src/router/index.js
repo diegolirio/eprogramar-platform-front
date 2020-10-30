@@ -29,6 +29,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Classroom.vue'),
   },
+  {
+    path: '/profile',
+    name: 'Profile',
+    meta: {
+      requiresAuth: true,
+    },
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
+  },
 ];
 
 const router = new VueRouter({
