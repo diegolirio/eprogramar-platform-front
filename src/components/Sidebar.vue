@@ -1,5 +1,6 @@
 <template>
-  <ul
+
+  <ul v-if="currentCourse"
     class="navbar-nav bg-gradient-eprogramar sidebar sidebar-dark accordion"
     id="accordionSidebar"
   >
@@ -21,10 +22,9 @@
         <small>Descrição</small>
         <span>{{currentSection.name}}</span>
       </div>
-      <div class="lesson-heading__number">
+      <div class="lesson-heading__number" v-if="currentCourse.sections">
         <small>Módulos</small>
-        <!-- <span>{{currentCourse.sections.length}}</span> -->
-        <span>{{this.sectionsQuantity}}</span>
+        <span>{{currentCourse.sections.length}}</span>
       </div>
     </div>
 
@@ -50,10 +50,9 @@
     <div class="sidebar-heading other-modules__title text-eprogramar-green">Módulos</div>
 
     <div class="other-modules">
-      <select class="other-modules__select">
+      <select class="other-modules__select" v-on:change="alert('section.name')">
         <option v-for="section in currentCourse.sections" 
-                :key="currentCourse.sections._id"
-                :value="section._id">
+                :key="section._id" :value="section._id" >
                 {{section.name}}
         </option>
       </select>
@@ -157,14 +156,15 @@ export default {
     'currentSection'
   ],
   beforeMount() {
-    this.sectionsQuantity = this.currentCourse.sections.length;
+    //if(this.currentCoursesections.sections) {
+    //  this.sectionsQuantity = this.currentCourse.sections.length;
+    //}
   },
   methods: {
     toggleSidebar: toggleSidebar,
   },
   data() {
-    sectionsQuantity: 0;
-    console.log('sectionsQuantity', this.sectionsQuantity);
+    //sectionsQuantity: 0;
     return {
   //     another: {
   //       id: "5f8a262d0f64e8bc8a974c31",

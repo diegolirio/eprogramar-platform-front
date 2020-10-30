@@ -1,7 +1,7 @@
 <template>
   <div id="page-top">
     <div id="wrapper">
-      <Sidebar v-bind:currentCourse="this.currentCourse" v-bind:currentSection="this.currentSection" />
+      <Sidebar v-bind:currentCourse="this.currentCourse" v-bind:currentSection="currentSection" />
 
       <div id="content-wrapper" class="d-flex flex-column">
         <main id="content">
@@ -72,14 +72,12 @@ export default {
   },
   created() {
     this.courseId = this.$route.params.courseId 
-    console.log('id', this.courseId);
     this.getCourse(this.courseId);
   },
   methods: {
     getCourse(id) {
-      console.log(`getCourse(${id})...`);
       Course.getCoursesById(id).then(response => {
-        console.log('course', response.data);
+        console.log(response.data);
         this.currentCourse = response.data;
         this.currentSection = this.currentCourse.sections[0];
       });
