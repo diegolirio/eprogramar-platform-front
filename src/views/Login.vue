@@ -89,25 +89,21 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(`email: ${this.login.email}, password: ${this.login.password}`);
       this.showLoading = true;
       Auth.signin(this.login.email, this.login.password)
         .then(response => {
-          console.log(response.data.token);
           storage.saveToken(response.data.token);      
           storage.saveCurrentUser(this.login.email);    
 					this.showLoading = false;
 					router.push('/');
           // TODO send courses to Home Page or Load Courses into Home Page
           // Course.getAllCourses().then(response => {
-          //   console.log(response.data);
           // }).then( () => {
           //   this.showLoading = false;
           //   router.push('/');
           // });
         }).catch(error => {
           this.showLoading = false;
-          console.error('Error at Authorization Auth API');
           alert(error);
         })
     }

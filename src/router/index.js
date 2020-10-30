@@ -36,13 +36,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('beforeEach()...');
-  console.log(from);
-  console.log(to);
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    console.log(`isLogedIn = ${storage.isLoggedIn()}`);
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     if (!storage.isLoggedIn()) {
       next({ name: 'Login' });
     } else {
