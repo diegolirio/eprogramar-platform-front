@@ -65,8 +65,6 @@ import Footer from "@/components/Footer.vue";
 import storage from "../services/storage";
 import Course from '../services/course';
 
-console.log(`existUser = ${storage.isLoggedIn()}`)
-
 export default {
   name: "Home",
   components: {
@@ -84,14 +82,11 @@ export default {
   },
   methods: {
     getCourses() {
-      console.log("getCourses()...");
       Course.getCoursesByUser(storage.getCurrentUser()).then(response => {
-        console.log(response.data);
         this.courses = response.data;
       });
     },
     playCourse(id) {
-      console.log(`id: ${id}`);
       this.$router.push(`/classroom/${id}`);
     }
   }
