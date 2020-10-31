@@ -73,6 +73,7 @@ import Loading from '../components/Loading';
 import Auth from '../services/auth';
 import router from '../router/index';
 import storage from '../services/storage';
+import User from '../services/user';
 
 export default {
   components: {
@@ -93,15 +94,19 @@ export default {
       Auth.signin(this.login.email, this.login.password)
         .then(response => {
           storage.saveToken(response.data.token);      
-          storage.saveCurrentUser(this.login.email);    
-					this.showLoading = false;
-					router.push('/');
-          // TODO send courses to Home Page or Load Courses into Home Page
-          // Course.getAllCourses().then(response => {
-          // }).then( () => {
-          //   this.showLoading = false;
-          //   router.push('/');
-          // });
+					storage.saveCurrentUser(this.login.email);    
+					User.getByEmail(this.login.email)
+					.then(response => {
+						this.showLoading = false;
+						router.push({path: `/`, query: {
+								userName: response.data.name,
+								userEmail: response.data.email
+							}
+						});
+					}).catch(error => {
+						this.showLoading = false;
+						alert(error);
+					})
         }).catch(error => {
           this.showLoading = false;
           alert(error);
@@ -148,17 +153,17 @@ export default {
 		}
 		.brand_logo_container {
 			position: absolute;
-			height: 170px;
-			width: 170px;
-			top: -75px;
+			height: 150px;
+			width: 150px;
+			top: -70px;
 			border-radius: 50%;
 			background: #00FF80;
-			padding: 10px;
+			padding: 2px;
 			text-align: center;
 		}
 		.brand_logo {
-			height: 150px;
-			width: 150px;
+			height: 145px;
+			width: 145px;
 			border-radius: 50%;
 			border: 2px solid #00FF80;
 		}

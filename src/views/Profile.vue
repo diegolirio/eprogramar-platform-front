@@ -10,10 +10,10 @@
               <div class="row">
                   <div class="col-md-4 border-right">
                       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" src="../../public/favicon.png" width="90">
-                        <span class="font-weight-bold">{{profile.firstName}} {{profile.lastName}} </span>
+                        <img class="rounded-circle mt-5" src="../../public/default-avatar.png" width="90">
+                        <span class="font-weight-bold">{{profile.name}} </span>
                         <span class="text-black-50">{{profile.email}} </span>
-                        <span class="text-black-30">{{profile.address.city}} {{profile.address.country}} </span>
+                        <span class="text-black-30">{{profile.city}} </span>
                       </div>
                   </div>
                   <div class="col-md-8">
@@ -22,52 +22,30 @@
                               <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
                                    <router-link :to="{ path: '/' }" >
                                     <h6>Back to home</h6>
-                                   </router-link>
+                                   </router-link> 
                               </div>
                               <h6 class="text-right">Edit Profile</h6>
                           </div>
                           <div class="row mt-2">
-                              <div class="col-md-7">
-                                <input type="text" class="form-control" placeholder="first name" :value="profile.firstName" />
-                              </div>
-                              <div class="col-md-5">
-                                <input type="text" class="form-control" placeholder="last name" :value="profile.lastName" />
+                              <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="Name" :value="profile.name" />
                               </div>
                           </div>
                           <div class="row mt-3">
-                              <div class="col-md-7">
+                              <div class="col-md-12">
                                 <input type="text" class="form-control" placeholder="Email" :value="profile.email">
                               </div>
-                              <div class="col-md-5">
-                                <input type="text" class="form-control" placeholder="Phone number" :value="profile.phone">
-                              </div>
                           </div>
                           <div class="row mt-3">
-                              <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="address" :value="profile.address.place"></div>
-                              <div class="col-md-3"><input type="text" class="form-control" :value="profile.address.number" placeholder="Numero"></div>
-                          </div>
-                          <div class="row mt-3">
-                              <div class="col-md-7">
-                                <input type="text" class="form-control" placeholder="Complemento" :value="profile.address.complement" >
-                              </div>
-                              <div class="col-md-5">
-                                <input type="text" class="form-control" placeholder="Cidade" :value="profile.address.city">
-                              </div>
-                          </div>
-                          <div class="row mt-3">
-                              <div class="col-md-7">
-                                <input type="text" class="form-control" placeholder="CEP" :value="profile.address.zipCode">
-                              </div>
-                              <div class="col-md-5">
-                                <input type="text" class="form-control" placeholder="Pais" :value="profile.address.country">
+                              <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="CreatedAt" :value="profile.city">
                               </div>
                           </div>
 
                           <div class="row mt-3">
-                              <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Descrição para o endereço" value="Casas do meu Pai">
-                              </div>
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="CreatedAt" :value="profile.createdAt"></div>
+                              <div class="col-md-6"><input type="text" class="form-control" :value="profile.updatedAt" placeholder="UpdatedAt"></div>
                           </div>
 
                           <div class="mt-5 text-right"><button class="btn btn-success profile-button" type="button">Save Profile</button></div>
@@ -136,27 +114,14 @@
 import TopNavBar from "@/components/TopNavBar.vue";
 import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
+import User from '../services/user';
 
 export default {
   name: "Classroom",
   data() {
     return {
-      profile: {
-        firstName: "Fabiano",
-        lastName: "Góes",
-        email: "fabiano@eprogramar.com.br",
-        phone: "11987654321",
-        address: {
-          place: "Avenida Guarulhos",
-          number: 1234,
-          complement: "Apartamento 123 Bloco 2",
-          zipCode: "0705643",
-          city: "Guarulhos",
-          country: "USA",
-          description: "Casa do meu Pai"
-        } 
-      },
-    }
+      profile: {} 
+      }
   },
   components: {
     TopNavBar,
@@ -164,6 +129,11 @@ export default {
     Footer,
   },
   created() {
+    console.log(this.$route.query.email);
+    User.getByEmail(this.$route.query.email).then(response => {
+      console.log(response.data);
+      this.profile = response.data;
+    });
   },
   methods: {
     getProfile() {

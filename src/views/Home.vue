@@ -4,7 +4,7 @@
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column h-100">
         <main id="content container">
-          <TopNavBar />
+          <TopNavBar :userName="userName" :userEmail="userEmail" />
           <div class="container-fluid">
 
             <div class="card" v-for="course in this.courses" :key="course.id">
@@ -64,6 +64,7 @@ import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
 import storage from "../services/storage";
 import Course from '../services/course';
+import User from '../services/user';
 
 export default {
   name: "Home",
@@ -75,10 +76,16 @@ export default {
   data() {
     return {
       courses: [],
+      userName: '',
+      userEmail: ''
     }
   },
   beforeMount() {
-    this.getCourses()
+    this.getCourses();   
+  },
+  created() {
+    this.userName = this.$route.query.userName;
+    this.userEmail = this.$route.query.userEmail;
   },
   methods: {
     getCourses() {
@@ -88,7 +95,7 @@ export default {
     },
     playCourse(id) {
       this.$router.push(`/classroom/${id}`);
-    }
+    },
   }
 };
 </script>
