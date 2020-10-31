@@ -8,12 +8,17 @@
           <TopNavBar :has-side-bar="true" :userName="userName" :userEmail="userEmail" />
           <div class="container-fluid">
             <div class="video-container">
-              <iframe
+              <!-- <iframe
                 src="https://www.youtube.com/embed/9ysYuVJSKAQ"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
-              ></iframe>
+              ></iframe> -->
+
+              <iframe src="https://player.vimeo.com/video/474207871" 
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
             </div>
           </div>
         </main>
@@ -32,9 +37,9 @@
 
 <style lang="scss" scoped>
 .video-container {
-  margin-top: 45px;
+  margin-top: 0px;
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 70.50%; /* 16:9 */
   height: 0;
   
   & iframe {
