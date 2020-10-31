@@ -4,7 +4,7 @@
     <div class="container">
 
       <div class="logo">
-          <router-link :to="{ path: '/' }" class="navbar-brand">
+          <router-link :to="{ path: `/${userName}/${userEmail}` }" class="navbar-brand">
             <img src="../../public/eprogramar-nome.png" 
                  alt="Logo e-Programar Circle"
                  height="50px">
@@ -17,13 +17,16 @@
 
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">John B</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
                 <img class="img-profile rounded-circle" src="../assets/logo.png">
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <router-link class="dropdown-item" :to="{ path: '/profile' }">
+                <router-link class="dropdown-item" :to="{ path: '/profile', query: {email: userEmail}}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Perfil
                 </router-link>
+                <!-- <a class="dropdown-item" href v-on:click.prevent="profile" >
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href v-on:click.prevent="logout" >
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
@@ -74,10 +77,14 @@
 
 <script>
 import storage from '../services/storage';
+import router from '../router/index';
+
 export default {
   name: "TopNavBar",
   components: {},
   props: {
+    userName: '',
+    userEmail: '',
     hasSideBar: {
       type: Boolean,
       required: false,
@@ -85,7 +92,7 @@ export default {
     },
   },
   data: () => {
-    return {      
+    return {  
       menus: [
         { name: "Home", route: "/", order: 1 },
         { name: "Classroom", route: "/classroom", order: 2 },
@@ -98,6 +105,10 @@ export default {
         storage.logout();
         this.$router.go();
     },
+    profile() {
+      // router.push(`/profile/${this.userEmail}`);
+       this.$router.push({path: '/profile', query: {email: this.userEmail}});
+    }
   },
 };
 </script>

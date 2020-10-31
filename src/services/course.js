@@ -1,13 +1,29 @@
 import { http } from './config';
+import storage from './storage';
 
 export default {
   getAllCourses: async () => {
-    return await http.get('courses');
+    const options = {
+      headers: {
+        Authorization: storage.getTokenBearer(),
+      },
+    };
+    return await http.get('courses', options);
   },
   getCoursesByUser: async (email) => {
-    return await http.get(`users/${email}/courses`);
+    const options = {
+      headers: {
+        Authorization: storage.getTokenBearer(),
+      },
+    };
+    return await http.get(`users/${email}/courses`, options);
   },
   getCoursesById: async (id) => {
-    return await http.get(`courses/${id}`);
+    const options = {
+      headers: {
+        Authorization: storage.getTokenBearer(),
+      },
+    };
+    return await http.get(`courses/${id}`, options);
   },
 };
