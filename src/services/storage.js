@@ -1,5 +1,6 @@
 const TOKEN_KEY = 'TOKEN';
-const CURRENT_USER_KEY = 'CURRENT_USER';
+const CURRENT_USER_NAME_KEY = 'CURRENT_USER_NAME';
+const CURRENT_USER_EMAIL_KEY = 'CURRENT_USER_EMAIL';
 const PROFILE = 'PROFILE';
 
 export default {
@@ -13,11 +14,15 @@ export default {
   saveToken: (token) => {
     localStorage.setItem(TOKEN_KEY, token);
   },
-  saveCurrentUser: (currentUser) => {
-    localStorage.setItem(CURRENT_USER_KEY, currentUser);
+  saveCurrentUser: (cuurentUserName, currentUserEmail) => {
+    localStorage.setItem(CURRENT_USER_NAME_KEY, cuurentUserName);
+    localStorage.setItem(CURRENT_USER_EMAIL_KEY, currentUserEmail);
   },
   getCurrentUser: () => {
-    return localStorage.getItem(CURRENT_USER_KEY);
+    return localStorage.getItem(CURRENT_USER_EMAIL_KEY);
+  },
+  getCurrentUserName: () => {
+    return localStorage.getItem(CURRENT_USER_NAME_KEY);
   },
   setProfile: (user) => {
     const profile = {
@@ -32,7 +37,7 @@ export default {
     return JSON.parse(localStorage.getItem(PROFILE));
   },
   isLoggedIn: () => {
-    return localStorage.getItem(CURRENT_USER_KEY) !== null;
+    return localStorage.getItem(CURRENT_USER_NAME_KEY) !== null;
   },
   logout: () => {
     localStorage.clear();

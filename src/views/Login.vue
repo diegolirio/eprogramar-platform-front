@@ -93,10 +93,10 @@ export default {
       this.showLoading = true;
       Auth.signin(this.login.email, this.login.password)
         .then(response => {
-          storage.saveToken(response.data.token);      
-					storage.saveCurrentUser(this.login.email);    
+          storage.saveToken(response.data.token);      					
 					User.getByEmail(this.login.email)
 					.then(response => {
+						storage.saveCurrentUser(response.data.name, this.login.email);    
 						this.showLoading = false;
 						router.push({path: `/`, query: {
 								userName: response.data.name,

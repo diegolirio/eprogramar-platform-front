@@ -85,7 +85,16 @@
 
   &__select {
     width: 100%;
+    height: 30px;
+    background-color: #49007C !important;
+    color: #00ff80;
+    border: 1px solid #00ff80;
+    border-radius: 4px;
   }
+
+    &__select:active {
+      border: 1px solid #00ff80 !important;
+    }
 
   .sidebar.toggled &,
   .sidebar.toggled &__title,
@@ -153,7 +162,7 @@ export default {
   name: "Sidebar",
   props: [
     'currentCourse',
-    'currentSection'
+    'currentSection'  
   ],
   beforeMount() {
     //if(this.currentCoursesections.sections) {

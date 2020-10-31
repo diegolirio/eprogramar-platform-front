@@ -94,7 +94,10 @@ export default {
       });
     },
     playCourse(id) {
-      this.$router.push(`/classroom/${id}`);
+      this.$router.push({path: '/classroom', query: {
+          courseId: id
+        }
+      });
     },
   }
 };
