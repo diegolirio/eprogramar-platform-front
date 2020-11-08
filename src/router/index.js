@@ -21,7 +21,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/Login.vue'),
   },
   {
-    path: '/classroom/:courseId',
+    path: '/classroom',
     name: 'Classroomm',
     meta: {
       requiresAuth: true,

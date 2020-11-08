@@ -4,14 +4,17 @@
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column h-100">
         <main id="content container">
-          <TopNavBar />
+          <TopNavBar :userName="userName" :userEmail="userEmail" />
           <div class="container-fluid">
 
             <div class="card" v-for="course in this.courses" :key="course.id">
-              <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course" alt="Curso">
+              <div class="card-header">
+                <h4 class="card-title">{{course.name}}</h4>
+              </div>
+              <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course card-img" alt="Curso">
               <div class="card-body">
-                <h5 class="card-title">{{course.name}}</h5>
-                <a @click="playCourse(course._id)" class="btn btn-primary">
+                
+                <a @click="playCourse(course._id)" class="btn btn-dark text-white">
                   <i class="fas fa-play"></i> 
                   Assistir Curso
                 </a>
@@ -39,12 +42,23 @@
   main {
     min-height: 768px;
   }
+  .container-fluid {
+    border-block-color: #49007c;
+  }
   .card {
     margin: 20px;
+    border-block-color: #49007c;
   }
   .card img {
     height: 210px;
     width: 450px;
+  }
+  .card-img {
+    margin: 20px;
+  }
+  .card-header {
+    background-color: #49007c;
+    color: #fff;
   }
   .btn-primary {
     background-color: #49007c !important;
@@ -64,6 +78,7 @@ import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
 import storage from "../services/storage";
 import Course from '../services/course';
+import User from '../services/user';
 
 export default {
   name: "Home",
@@ -75,10 +90,16 @@ export default {
   data() {
     return {
       courses: [],
+      userName: '',
+      userEmail: ''
     }
   },
   beforeMount() {
-    this.getCourses()
+    this.getCourses();   
+  },
+  created() {
+    this.userName = storage.getCurrentUserName();
+    this.userEmail = storage.getCurrentUser();
   },
   methods: {
     getCourses() {
@@ -87,8 +108,11 @@ export default {
       });
     },
     playCourse(id) {
-      this.$router.push(`/classroom/${id}`);
-    }
+      this.$router.push({path: '/classroom', query: {
+          courseId: id
+        }
+      });
+    },
   }
 };
 </script>

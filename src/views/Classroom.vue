@@ -1,19 +1,24 @@
 <template>
   <div id="page-top">
     <div id="wrapper">
-      <Sidebar v-bind:currentCourse="this.currentCourse" v-bind:currentSection="currentSection" />
+      <Sidebar :currentCourse="currentCourse" :currentSection="currentSection" />
 
       <div id="content-wrapper" class="d-flex flex-column">
         <main id="content">
-          <TopNavBar :has-side-bar="true" />
+          <TopNavBar :has-side-bar="true" :userName="userName" :userEmail="userEmail" />
           <div class="container-fluid">
             <div class="video-container">
-              <iframe
+              <!-- <iframe
                 src="https://www.youtube.com/embed/9ysYuVJSKAQ"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
-              ></iframe>
+              ></iframe> -->
+
+              <iframe src="https://player.vimeo.com/video/474207871" 
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
             </div>
           </div>
         </main>
@@ -32,9 +37,9 @@
 
 <style lang="scss" scoped>
 .video-container {
-  margin-top: 45px;
+  margin-top: 0px;
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 70.50%; /* 16:9 */
   height: 0;
   
   & iframe {
@@ -54,6 +59,7 @@ import Sidebar from "@/components/Sidebar.vue";
 import TopNavBarLogoutModal from "@/components/TopNavBarLogoutModal.vue";
 import Footer from "@/components/Footer.vue";
 import Course from '../services/course';
+import storage from "../services/storage";
 
 export default {
   name: "Classroom",
@@ -61,7 +67,9 @@ export default {
     return {
       courseId: '',
       currentCourse: {},
-      currentSection: {}
+      currentSection: {},
+      userName: '',
+      userEmail: '',
     }
   },
   components: {
@@ -71,13 +79,17 @@ export default {
     Footer,
   },
   created() {
-    this.courseId = this.$route.params.courseId 
+    console.log('<<< ClassRoom >>>');
+    this.userEmail = storage.getCurrentUser();
+    this.userName = storage.getCurrentUserName();
+    console.log('userEmail', this.userEmail);
+    console.log('userName', this.userName);
+    this.courseId = this.$route.query.courseId 
     this.getCourse(this.courseId);
   },
   methods: {
     getCourse(id) {
       Course.getCoursesById(id).then(response => {
-        console.log(response.data);
         this.currentCourse = response.data;
         this.currentSection = this.currentCourse.sections[0];
       });
