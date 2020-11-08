@@ -4,7 +4,7 @@
     <div class="container">
 
       <div class="logo">
-          <router-link :to="{ path: `/${userName}/${userEmail}` }" class="navbar-brand">
+          <router-link :to="{ path: '/' }" class="navbar-brand">
             <img src="../../public/eprogramar-nome.png" 
                  alt="Logo e-Programar Circle"
                  height="50px">

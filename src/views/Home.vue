@@ -9,12 +9,12 @@
 
             <div class="card" v-for="course in this.courses" :key="course.id">
               <div class="card-header">
-                <h5 class="card-title">{{course.name}}</h5>
+                <h4 class="card-title">{{course.name}}</h4>
               </div>
-              <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course" alt="Curso">
+              <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course card-img" alt="Curso">
               <div class="card-body">
                 
-                <a @click="playCourse(course._id)" class="btn btn-primary">
+                <a @click="playCourse(course._id)" class="btn btn-dark text-white">
                   <i class="fas fa-play"></i> 
                   Assistir Curso
                 </a>
@@ -48,6 +48,13 @@
   .card img {
     height: 210px;
     width: 450px;
+  }
+  .card-img {
+    margin: 20px;
+  }
+  .card-header {
+    background-color: #49007c;
+    color: #fff;
   }
   .btn-primary {
     background-color: #49007c !important;
