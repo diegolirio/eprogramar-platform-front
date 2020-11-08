@@ -8,9 +8,12 @@
           <div class="container-fluid">
 
             <div class="card" v-for="course in this.courses" :key="course.id">
+              <div class="card-header">
+                <h5 class="card-title">{{course.name}}</h5>
+              </div>
               <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course" alt="Curso">
               <div class="card-body">
-                <h5 class="card-title">{{course.name}}</h5>
+                
                 <a @click="playCourse(course._id)" class="btn btn-primary">
                   <i class="fas fa-play"></i> 
                   Assistir Curso
