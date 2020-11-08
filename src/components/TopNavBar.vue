@@ -43,10 +43,13 @@
 
 <style lang="scss" scoped>
 
-.logo {
-  margin-left: -12rem;
-  padding-left: 0;
-}
+
+  @media only screen and (max-width: 600px) {
+    .logo {
+      margin-left: -12rem;
+      padding-left: 0;
+    }
+  }
 
 .navbar-top {
   display: flex;

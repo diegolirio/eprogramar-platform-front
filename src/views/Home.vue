@@ -98,8 +98,8 @@ export default {
     this.getCourses();   
   },
   created() {
-    this.userName = this.$route.query.userName;
-    this.userEmail = this.$route.query.userEmail;
+    this.userName = storage.getCurrentUserName();
+    this.userEmail = storage.getCurrentUser();
   },
   methods: {
     getCourses() {
