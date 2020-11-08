@@ -19,13 +19,17 @@
 
     <div class="lesson-heading">
       <div class="lesson-heading__description">
-        <small>Descrição</small>
-        <span>{{currentSection.name}}</span>
+        <!-- <small>Descrição</small> -->
+        <span class="section-font-size">{{sectionContentCurrent ? sectionContentCurrent.description : currentSection.contents[0].description}}</span>
       </div>
+      <!-- 
+          TODO:  Quantidade de Modulos, aplicar a responsividade
+
       <div class="lesson-heading__number" v-if="currentCourse.sections">
         <small>Módulos</small>
         <span>{{currentCourse.sections.length}}</span>
       </div>
+      -->
     </div>
 
     <!-- Divider -->
@@ -38,7 +42,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item" v-for="sectionContent in currentSection.contents" :key="sectionContent.id">
-      <a class="nav-link" href="#">
+      <a class="nav-link" v-on:click.prevent="setSectionContent(sectionContent)" href="#">
         <i class="far fa-fw fa-play-circle"></i>
         <span>{{sectionContent.description}}</span>
       </a>
@@ -50,7 +54,7 @@
     <div class="sidebar-heading other-modules__title text-eprogramar-green">Módulos</div>
 
     <div class="other-modules">
-      <select class="other-modules__select" v-on:change="alert('section.name')">
+      <select class="other-modules__select" v-on:change="setModule($event)">
         <option v-for="section in currentCourse.sections" 
                 :key="section._id" :value="section._id" >
                 {{section.name}}
@@ -66,6 +70,44 @@
     </div>
   </ul>
 </template>
+
+<script>
+// Toggle the side navigation
+
+let toggleSidebar = () => {
+  window.$("body").toggleClass("sidebar-toggled");
+  window.$(".sidebar").toggleClass("toggled");
+  if (window.$(".sidebar").hasClass("toggled")) {
+    window.$(".sidebar .collapse").collapse("hide");
+  }
+};
+
+export default {
+  name: "Sidebar",
+  props: [
+    'currentCourse',
+    'currentSection'  
+  ],
+  methods: {
+    toggleSidebar: toggleSidebar,
+    setModule(event) {
+       console.log(event.target.value);
+       this.currentSection = this.currentCourse.sections.filter(s => s._id === event.target.value)[0];
+       this.sectionContentCurrent = this.currentSection.contents[0];
+    },
+    setSectionContent(sectionContent) {
+      console.log(sectionContent);
+      this.sectionContentCurrent = sectionContent;
+    }
+  }, 
+  data() {
+    return {  
+      sectionContentCurrent: null
+    }
+  }
+} 
+</script>
+
 
 <style lang="scss" scoped>
 .bg-gradient-eprogramar {
@@ -144,110 +186,8 @@
   .text-eprogramar-green {
     color: #00ff80 !important;
   }
+  .section-font-size {
+    font-size: 14px;
+  }
 }
 </style>
-
-<script>
-// Toggle the side navigation
-
-let toggleSidebar = () => {
-  window.$("body").toggleClass("sidebar-toggled");
-  window.$(".sidebar").toggleClass("toggled");
-  if (window.$(".sidebar").hasClass("toggled")) {
-    window.$(".sidebar .collapse").collapse("hide");
-  }
-};
-
-export default {
-  name: "Sidebar",
-  props: [
-    'currentCourse',
-    'currentSection'  
-  ],
-  beforeMount() {
-    //if(this.currentCoursesections.sections) {
-    //  this.sectionsQuantity = this.currentCourse.sections.length;
-    //}
-  },
-  methods: {
-    toggleSidebar: toggleSidebar,
-  },
-  data() {
-    //sectionsQuantity: 0;
-    return {
-  //     another: {
-  //       id: "5f8a262d0f64e8bc8a974c31",
-  //       name: "Curso de Java para Iniciantes",
-  //       tumbnail: "https://www.eprogramar.com.br/assets/images/slider-1.png",
-  //       sections: [
-  //           {
-  //               id: "5f8a262d0f64e8bc8a974c32",
-  //               name: "Setup",
-  //               order: 1,
-  //               contents: [
-  //                   {
-  //                       type: "MOVIE",
-  //                       id: "5f8a262d0f64e8bc8a974c33",
-  //                       description: "Instalação do Java",
-  //                       value: "http://vimeo.com/eprogramar/java-install.mp4",
-  //                       order: 1
-  //                   },
-  //                   {
-  //                       type: "MOVIE",
-  //                       id: "5f8a262d0f64e8bc8a974c34",
-  //                       description: "Configuração do JAVA_HOME",
-  //                       value: "http://vimeo.com/eprogramar/java-home.md",
-  //                       order: 2
-  //                   },
-  //                   {
-  //                       type: "MOVIE",
-  //                       id: "5f8a262d0f64e8bc8a974c35",
-  //                       description: "Instalação da IDE",
-  //                       value: "http://vimeo.com/eprogramar/java-ide.mp4",
-  //                       order: 3
-  //                   }
-  //               ]
-  //           },
-  //           {
-  //               id: "5f8a262d0f64e8bc8a974c36",
-  //               name: "POO - Programação Orientada a Objetos",
-  //               order: 2,
-  //               contents: [
-  //                   {
-  //                       type: "MOVIE",
-  //                       id: "5f8a262d0f64e8bc8a974c37",
-  //                       description: "POO - Classes",
-  //                       value: "http://vimeo.com/eprogramar/poo-classes.mp4",
-  //                       order: 1
-  //                   },
-  //                   {
-  //                       type: "MOVIE",
-  //                       id: "5f8a262d0f64e8bc8a974c38",
-  //                       description: "POO - Métodos",
-  //                       value: "http://vimeo.com/eprogramar/poo-methods.md",
-  //                       order: 2
-  //                   },
-  //                   {
-  //                       type: "MOVIE",
-  //                       id: "5f8a262d0f64e8bc8a974c39",
-  //                       description: "POO - Encapsulamento",
-  //                       value: "http://vimeo.com/eprogramar/poo-encapsulamento.mp4",
-  //                       order: 3
-  //                   },
-  //                   {
-  //                       type: "MOVIE",
-  //                       id: "5f8a262d0f64e8bc8a974c3a",
-  //                       description: "POO - UML",
-  //                       value: "http://vimeo.com/eprogramar/poo-uml.md",
-  //                       order: 4
-  //                   }
-  //               ]
-  //           }
-  //       ],
-  //       createdAt: "2020-10-16T23:01:01.778Z",
-  //       updatedAt: "2020-10-16T23:01:01.778Z"
-  //     }
-    }
-  }
-};
-</script>
