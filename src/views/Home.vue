@@ -42,8 +42,12 @@
   main {
     min-height: 768px;
   }
+  .container-fluid {
+    border-block-color: #49007c;
+  }
   .card {
     margin: 20px;
+    border-block-color: #49007c;
   }
   .card img {
     height: 210px;
