@@ -5,22 +5,26 @@
       <div id="content-wrapper" class="d-flex flex-column h-100">
         <main id="content container">
           <TopNavBar :userName="userName" :userEmail="userEmail" />
-          <div class="container-fluid">
-
-            <div class="card" v-for="course in this.courses" :key="course.id">
-              <div class="card-header">
-                <h4 class="card-title">{{course.name}}</h4>
-              </div>
-              <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course card-img" alt="Curso">
-              <div class="card-body">
-                
-                <a @click="playCourse(course._id)" class="btn btn-dark text-white">
-                  <i class="fas fa-play"></i> 
-                  Assistir Curso
-                </a>
-              </div>
+          <div class="row">
+            <div class="col-sm-3"></div>
+              <div class="col-sm-6">
+              <!-- <div class="container-fluid"> -->
+                <div class="card" v-for="course in this.courses" :key="course.id">
+                  <div class="card-header">
+                    <h5 class="card-title">{{course.name}}</h5>
+                  </div>
+                  <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course card-img" alt="Curso">
+                  <div class="card-body">
+                    
+                    <a @click="playCourse(course._id)" class="btn btn-dark text-white">
+                      <i class="fas fa-play"></i> 
+                      Assistir Curso
+                    </a>
+                  </div>
+                </div>
             </div>
-
+            <div class="col-sm-3"></div>
+          <!-- </div> -->
           </div>
         </main>
 
@@ -55,6 +59,8 @@
   }
   .card-img {
     margin: 20px;
+    max-height: 130px;
+    max-width: 150px;
   }
   .card-header {
     background-color: #49007c;
