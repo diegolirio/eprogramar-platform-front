@@ -15,10 +15,19 @@
                 allowfullscreen
               ></iframe> -->
 
-              <iframe src="https://player.vimeo.com/video/474207871" 
+              <!-- <iframe src="https://vimeo.com/476755283/197ce574f1" 
                       frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen></iframe>
+                      allowfullscreen></iframe> -->
+
+                      <iframe :src="'https://player.vimeo.com/video/' + this.getMovieId(this.$route.query.currentMovie)" 
+                              width="640" 
+                              height="400" 
+                              frameborder="0" 
+                              allow="autoplay; fullscreen" 
+                              allowfullscreen>
+                        </iframe>
+
             </div>
           </div>
         </main>
@@ -88,6 +97,10 @@ export default {
     this.getCourse(this.courseId);
   },
   methods: {
+    getMovieId(path) {
+      const splited = path.split('/');
+      return splited[splited.length-1];
+    },
     getCourse(id) {
       Course.getCoursesById(id).then(response => {
         this.currentCourse = response.data;

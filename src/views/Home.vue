@@ -114,10 +114,17 @@ export default {
       });
     },
     playCourse(id) {
-      this.$router.push({path: '/classroom', query: {
-          courseId: id
+      Course.getCoursesById(id).then(response => {
+        this.currentCourse = response.data;
+        this.currentSection = this.currentCourse.sections[0];
+        const currentMovie = this.currentSection.contents[0].value;
+        this.$router.push({path: '/classroom', query: {
+          courseId: id, 
+          currentMovie: currentMovie
         }
       });
+      });
+
     },
   }
 };

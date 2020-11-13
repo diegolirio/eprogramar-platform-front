@@ -96,8 +96,13 @@ export default {
        this.sectionContentCurrent = this.currentSection.contents[0];
     },
     setSectionContent(sectionContent) {
-      console.log(sectionContent);
+      console.log('sectionContent()...',  sectionContent);
       this.sectionContentCurrent = sectionContent;
+      this.$router.push({path: '/classroom', query: {
+          courseId: this.$route.query.courseId,
+          currentMovie: sectionContent.value
+        }
+      });
     }
   }, 
   data() {
