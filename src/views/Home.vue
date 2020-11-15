@@ -6,10 +6,10 @@
         <main id="content container">
           <TopNavBar :userName="userName" :userEmail="userEmail" />
           <div class="row">
-            <div class="col-sm-3"></div>
-              <div class="col-sm-6">
-              <!-- <div class="container-fluid"> -->
-                <div class="card" v-for="course in this.courses" :key="course.id">
+              <div class="col-6" v-for="course in this.courses" :key="course.id">
+              <div class="container-fluid">
+                <!-- <div class="card-deck">
+                <div class="card border-primary">
                   <div class="card-header">
                     <h5 class="card-title">{{course.name}}</h5>
                   </div>
@@ -22,9 +22,29 @@
                     </a>
                   </div>
                 </div>
+                </div> -->
+                <div class="card border-primary mb-3" style="max-width: 100%;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img :src="course.tumbnail" class="img-responsive mx-auto d-block card-course card-img rounded-left" alt="Curso">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body text-left">
+                        <h5 class="card-title">{{course.name}}</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+                        <a @click="playCourse(course._id)" class="btn btn-success">
+                          <i class="fas fa-play mr-1"></i>  
+                          Assistir Curso
+                        </a>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
             </div>
-            <div class="col-sm-3"></div>
-          <!-- </div> -->
+          </div>
           </div>
         </main>
 
@@ -56,11 +76,11 @@
   .card img {
     height: 210px;
     width: 450px;
+    border-radius: 10;
   }
   .card-img {
-    margin: 20px;
-    max-height: 130px;
-    max-width: 150px;
+    /* max-height: 130px; */
+    max-width: 220px;
   }
   .card-header {
     background-color: #49007c;
@@ -74,7 +94,19 @@
   .btn-primary:hover {
     background-color: #7b2bb4 !important;
     border-color: #49007c !important;
-    color: #fff;
+    color: #fff !important;
+  }
+  .border-primary {
+    border-color: #49007c !important;
+  }
+  .btn-success {
+    background-color: #00ff80 !important;
+    color: #49007c !important;
+  }
+  .btn-success:hover {
+    background-color: #12a35b !important;
+    border-color: #00ff80 !important;
+    color: #fff !important;
   }
 </style>
 
