@@ -4,7 +4,7 @@
     class="navbar-nav bg-gradient-eprogramar sidebar sidebar-dark accordion"
     id="accordionSidebar"
   >
-    <!-- Sidebar - Brand -->
+    
     <router-link to="/" class="sidebar-brand d-flex align-items-center justify-content-center">
       <img
         class="sidebar-brand-icon logo-sidebar"
@@ -14,13 +14,11 @@
       <div class="sidebar-brand-text mx-3">{{currentCourse.name}}</div>
     </router-link>
 
-    <!-- Divider -->
     <hr class="sidebar-divider my-0" />
 
     <div class="lesson-heading">
       <div class="lesson-heading__description">
-        <!-- <small>Descrição</small> -->
-        <span class="section-font-size">{{sectionContentCurrent ? sectionContentCurrent.description : currentSection.contents[0].description}}</span>
+        <span class="section-font-size">{{section ? section.description : section.contents[0].description}}</span>
       </div>
       <!-- 
           TODO:  Quantidade de Modulos, aplicar a responsividade
@@ -32,16 +30,13 @@
       -->
     </div>
 
-    <!-- Divider -->
     <hr class="sidebar-divider" />
 
-    <!-- Heading -->
     <div class="sidebar-heading text-eprogramar-green">
       Conteúdo
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item" v-for="sectionContent in currentSection.contents" :key="sectionContent.id">
+    <li class="nav-item" v-for="sectionContent in section.contents" :key="sectionContent.id">
       <a class="nav-link" v-on:click.prevent="setSectionContent(sectionContent)" href="#">
         <i class="far fa-fw fa-play-circle"></i>
         <span>{{sectionContent.description}}</span>
@@ -72,8 +67,7 @@
 </template>
 
 <script>
-// Toggle the side navigation
-
+import { mapGetters } from "vuex";
 let toggleSidebar = () => {
   window.$("body").toggleClass("sidebar-toggled");
   window.$(".sidebar").toggleClass("toggled");
@@ -85,31 +79,37 @@ let toggleSidebar = () => {
 export default {
   name: "Sidebar",
   props: [
-    'currentCourse',
-    'currentSection'  
+    'currentCourse'
   ],
   methods: {
     toggleSidebar: toggleSidebar,
     setModule(event) {
-       console.log(event.target.value);
-       this.currentSection = this.currentCourse.sections.filter(s => s._id === event.target.value)[0];
-       this.sectionContentCurrent = this.currentSection.contents[0];
+      let currentSection = this.currentCourse.sections.filter(s => s._id === event.target.value)[0];
+      console.log(currentSection);
+      this.$store.commit("sectionStore/setSection", currentSection);
+      //this.sectionContentCurrent = this.currentSection.contents[0];
+      //this.setSectionContent( this.sectionContentCurrent );
     },
-    setSectionContent(sectionContent) {
-      console.log('sectionContent()...',  sectionContent);
-      this.sectionContentCurrent = sectionContent;
-      this.$router.push({path: '/classroom', query: {
-          courseId: this.$route.query.courseId,
-          currentMovie: sectionContent.value
-        }
-      });
-    }
+    //setSectionContent(sectionContent) {
+    //  this.sectionContentCurrent = sectionContent;
+    //  const splited = sectionContent.value.split('/');      
+    //  let videoId = splited[splited.length-1];
+    //  this.$store.commit("videoStore/setVideo", videoId);
+    //}
   }, 
   data() {
     return {  
       sectionContentCurrent: null
     }
-  }
+  },
+  mounted: {
+    //this.$store.commit("sectionStore/setSection", this.currentSection);
+  },
+  computed: {
+    ...mapGetters({
+      section: "sectionStore/section",
+    })
+  },   
 } 
 </script>
 
