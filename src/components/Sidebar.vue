@@ -18,7 +18,7 @@
 
     <div class="lesson-heading">
       <div class="lesson-heading__description">
-        <span class="section-font-size">{{section ? section.description : section.contents[0].description}}</span>
+        <span class="section-font-size">{{sectionContentCurrent ? sectionContentCurrent.description : section.contents[0].description}}</span>
       </div>
       <!-- 
           TODO:  Quantidade de Modulos, aplicar a responsividade
@@ -85,17 +85,15 @@ export default {
     toggleSidebar: toggleSidebar,
     setModule(event) {
       let currentSection = this.currentCourse.sections.filter(s => s._id === event.target.value)[0];
-      console.log(currentSection);
       this.$store.commit("sectionStore/setSection", currentSection);
-      //this.sectionContentCurrent = this.currentSection.contents[0];
-      //this.setSectionContent( this.sectionContentCurrent );
+      this.sectionContentCurrent = this.currentSection.contents[0];
     },
-    //setSectionContent(sectionContent) {
-    //  this.sectionContentCurrent = sectionContent;
-    //  const splited = sectionContent.value.split('/');      
-    //  let videoId = splited[splited.length-1];
-    //  this.$store.commit("videoStore/setVideo", videoId);
-    //}
+    setSectionContent(sectionContent) {
+      this.sectionContentCurrent = sectionContent;
+      const splited = sectionContent.value.split('/');      
+      let videoId = splited[splited.length-1];
+      this.$store.commit("videoStore/setVideo", videoId);
+    }
   }, 
   data() {
     return {  
@@ -103,7 +101,6 @@ export default {
     }
   },
   mounted: {
-    //this.$store.commit("sectionStore/setSection", this.currentSection);
   },
   computed: {
     ...mapGetters({

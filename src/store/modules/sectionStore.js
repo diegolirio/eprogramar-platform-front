@@ -2,6 +2,7 @@ import store from '../store';
 
 const state = {
   section: {},
+  sectionContent: {},
 }
 
 // getters

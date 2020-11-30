@@ -79,11 +79,8 @@ export default {
     Footer,
   },
   created() {
-    console.log('<<< ClassRoom >>>');
     this.userEmail = storage.getCurrentUser();
     this.userName = storage.getCurrentUserName();
-    console.log('userEmail', this.userEmail);
-    console.log('userName', this.userName);
     this.courseId = this.$route.query.courseId 
     this.getCourse(this.courseId);
     this.getMovieId(this.$route.query.currentMovie);
@@ -98,7 +95,6 @@ export default {
     getCourse(id) {
      Course.getCoursesById(id).then(response => {
        this.currentCourse = response.data;
-       console.log(this.currentCourse);
        this.$store.commit('sectionStore/setSection', this.currentCourse.sections[0]); 
      });
     },
