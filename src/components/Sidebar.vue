@@ -86,7 +86,7 @@ export default {
     setModule(event) {
       let currentSection = this.currentCourse.sections.filter(s => s._id === event.target.value)[0];
       this.$store.commit("sectionStore/setSection", currentSection);
-      this.sectionContentCurrent = this.currentSection.contents[0];
+      this.sectionContentCurrent = currentSection.contents[0];
     },
     setSectionContent(sectionContent) {
       this.sectionContentCurrent = sectionContent;
