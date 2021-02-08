@@ -1,5 +1,5 @@
 import axios from 'axios';
-import storage from '../services/storage';
+//import storage from '../services/storage';
 
 axios.defaults.headers.common = {
   // TODO deveria passar em todas as requests mas não esta passando

@@ -8,7 +8,7 @@ export default {
     return localStorage.getItem(TOKEN_KEY);
   },
   getTokenBearer: () => {
-    const tokenBearer = `Bearer ${localStorage.getItem(TOKEN_KEY)}`;
+    //const tokenBearer = `Bearer ${localStorage.getItem(TOKEN_KEY)}`;
     return `Bearer ${localStorage.getItem(TOKEN_KEY)}`;
   },
   saveToken: (token) => {
