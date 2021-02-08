@@ -52,7 +52,7 @@
                             </v-row>
                         </router-link>
 
-                        <div style="cursor: pointer;" >                           
+                        <div style="cursor: pointer;" @click="logout">                           
                             <v-divider class="my-1"></v-divider>
                             <v-col cols="12" class="font-weight-medium">
                                 Sair
@@ -74,6 +74,12 @@
     components: {
         NavigationDrawer
     },
+    methods: {
+        logout() {
+            localStorage.clear();
+            this.$router.push('/login');
+        },
+    },     
     data: () => ({ drawer: null }),
   }
 </script>

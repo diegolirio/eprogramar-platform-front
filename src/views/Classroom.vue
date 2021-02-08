@@ -4,17 +4,22 @@
         <AppBar :navigate="navigate" />                
         
         <v-main >            
-            <v-btn color="primary">Voltar</v-btn>
-            <v-btn color="success">Concluido</v-btn>
-            <div class="video-container">
-                
-                <iframe src="https://www.youtube.com/embed/qaixOjsOX6s"
-                        allowfullscreen="true" 
-                        webkitallowfullscreen="true" 
-                        mozallowfullscreen="true" >
-                </iframe>              
+              <v-btn style="width: 50%;" color="secondary">
+                  <v-icon style="margin-right: 10px;">mdi-reply</v-icon> Voltar
+              </v-btn>    
+              <v-btn style="width: 50%;" color="success">
+                  <v-icon style="margin-right: 10px;">mdi-check</v-icon> Concluido
+              </v-btn>
 
-            </div>
+              <div class="video-container">
+                  
+                  <iframe src="https://www.youtube.com/embed/qaixOjsOX6s"
+                          allowfullscreen="true" 
+                          webkitallowfullscreen="true" 
+                          mozallowfullscreen="true" >
+                  </iframe>              
+
+              </div>
 
         </v-main>
     </div>
@@ -53,5 +58,12 @@ iframe {
     width: 100%;
     height: 100%;
 
+}
+div.btn__content {
+  padding: 0;
+}
+
+div.card__actions .btn {
+  min-width: 0;
 }
 </style>

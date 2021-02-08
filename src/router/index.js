@@ -2,10 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Classroom from '../views/Classroom.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },    
   {
     path: '/',
     name: 'Home',
@@ -29,5 +35,20 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('TOKEN');
+  if(to.name !== 'Login') {
+    console.log(token);
+    if (token || to.name === 'Login') {
+      next()
+    } else {
+      next({name: 'Login'}) 
+    } 
+  } else {
+    next()
+  }
+}
+);
 
 export default router
