@@ -47,6 +47,7 @@
         color="success"
         style="width: 100%;"
         v-on:click="$emit('play-course', _id)"
+        :loading="loading"
       >
         Assistir Curso
       </v-btn>
@@ -113,6 +114,6 @@
 export default {
   name: "CardCourse",
   components: {},
-  props: ['tumbnail', 'name', '_id' ],
+  props: ['tumbnail', 'name', '_id', 'loading' ],
 };
 </script>
