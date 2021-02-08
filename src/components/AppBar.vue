@@ -42,7 +42,7 @@
                                 <v-col cols="9"> 
                                     <div>
                                         <span class="font-weight-black">
-                                            Diego Lirio
+                                            {{ getCurrentUserName() }}
                                         </span>
                                     </div>
                                     <div>
@@ -69,6 +69,7 @@
 
 <script>
   import NavigationDrawer from './NavigationDrawer'
+  import storage from '../services/storage'
   export default {
     props: ['navigate'],
     components: {
@@ -79,6 +80,9 @@
             localStorage.clear();
             this.$router.push('/login');
         },
+        getCurrentUserName() {
+            return storage.getCurrentUserName();
+        }
     },     
     data: () => ({ drawer: null }),
   }

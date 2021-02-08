@@ -17,11 +17,11 @@
 
                     <v-text-field
                       autocomplete="off"
-                      label="Username"
+                      label="E-mail"
                       prepend-icon="mdi-account"
-                      v-model="user.username"
-                      :rules="[ val => val && val.length > 0 || 'Username Obrigatorio']"
-                      ref="username"
+                      v-model="user.email"
+                      :rules="[ val => val && val.length > 0 || 'E-mail Obrigatorio']"
+                      ref="email"
                       required
                     />
 
@@ -36,9 +36,13 @@
                       ref="password"
                       required
                     />
-                    <br /><br />
-                    
+                    <br />                    
                     <v-btn type="submit" large color="success" :loading="loading">Entrar</v-btn>
+                    <br /><br /><br />
+                    <router-link to="/nova-conta">Criar nova conta</router-link>
+                    <br />
+                    <router-link to="/esqueci-senha">Esqueci minha senha</router-link>                    
+                    <br /><br />
                   </div>
                 </v-col>
               </v-row>
@@ -53,6 +57,9 @@
 
 <script>
     import SnackBar from '../components/SnackBar';
+    import Auth from '../services/auth';
+    import storage from '../services/storage';
+    import User from '../services/user';
     export default {
         components: {
           SnackBar
@@ -73,12 +80,32 @@
         methods: {
             onSubmit() {
                 if(this.$refs.form.validate()) {     
-                    this.user.username = this.user.username.toLowerCase();
+                    this.user.email = this.user.email.toLowerCase();
                     this.loading = true;
-                    
-                    localStorage.setItem('TOKEN', this.user.username);
-                    this.showMessage('success', 'Login OK');
-                    this.$router.push('/');
+                    Auth.signin(this.user.email, this.user.password)
+                        .then(response => {
+                            storage.saveToken(response.data.token);      					
+                            User.getByEmail(this.user.email)
+                                .then(response => {
+                                    storage.saveCurrentUser(response.data.name, this.user.email);    
+                                    this.loading = false;
+                                    this.$router.push({path: `/`, query: {
+                                            userName: response.data.name,
+                                            userEmail: response.data.email
+                                        }
+                                    });
+                                }).catch(error => {
+                                    this.loading = false;
+                                    alert(error);
+                                })
+                        }).catch(error => {
+                            this.loading = false;
+                            alert(error);
+                        })
+
+                    // localStorage.setItem('TOKEN', this.user.username);
+                    // this.showMessage('success', 'Login OK');
+                    // this.$router.push('/');
                     
 
                     // gateway.signIn(this.user, 
