@@ -4,8 +4,10 @@
         <AppBar :navigate="navigate" />                
         
         <v-main >            
+            <v-btn color="primary">Voltar</v-btn>
+            <v-btn color="success">Concluido</v-btn>
             <div class="video-container">
-
+                
                 <iframe src="https://www.youtube.com/embed/qaixOjsOX6s"
                         allowfullscreen="true" 
                         webkitallowfullscreen="true" 
