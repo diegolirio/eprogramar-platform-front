@@ -7,7 +7,7 @@
             <v-progress-linear
               indeterminate
               rounded
-              :active="loadingBeforeMount"
+              :active="loadingBeforeMount || loading"
               background-opacity="0.42"
               buffer-value="100"
               height="7"
