@@ -103,6 +103,9 @@
             this.$vuetify.theme.dark = this.themeDark;
         }
     },     
-    data: () => ({ drawer: null, themeDark: this.$vuetify.theme.dark }),
+    data: () => ({ 
+        drawer: null, 
+        themeDark: false
+    }),
   }
 </script>
