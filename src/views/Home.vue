@@ -3,7 +3,7 @@
     <div>
         <AppBar :navigate="navigate"/>             
         <v-main>
-          <v-col cols="12"  v-if="loadingBeforeMount || loading">
+          <v-col cols="12"  v-if="loadingBeforeMount || loading" style="margin-top: -12px; width: 100%">
             <v-progress-linear
               indeterminate
               rounded
