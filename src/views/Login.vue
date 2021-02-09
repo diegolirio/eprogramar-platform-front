@@ -3,10 +3,10 @@
     <v-row justify="center">
       <v-col xl="6" lg="6" md="8" sm="12" xs="12" cols="12" class="pt-6" style="padding: 0">
         <v-slide-y-transition appear>
-          <v-form id="form" ref="form" v-model="valid" lazy-validation v-on:submit.prevent="onSubmit">
+          <v-form id="form" ref="form" v-model="valid" lazy-validation v-on:submit.prevent="onSubmit" style="margin-top: 100px;">
             <v-card class="pa-3 pa-md-6 mx-auto">
               <p class="mr-2 text-center primary--text" style="font-family: 'Frijole', cursive; font-size: 2rem;" >
-                    <center>
+                    <center style="margin-top: -50px;">
                         <v-img src="../assets/logo-eprogramar.png" class="brand_logo" align="center"/>
                     </center>
               </p>
@@ -156,13 +156,13 @@
     }    
 </script>
 <style scoped>
-.brand_logo {
-    height: 145px;
-    width: 145px;
-    border-radius: 50%;
-    border: 2px solid #00ff80;
-}
-/* .backcolor {
-  background-color: #6f42c1;
-} */
+    .brand_logo {
+        height: 145px;
+        width: 145px;
+        border-radius: 50%;
+        border: 2px solid #00ff80;
+    }
+    /* .backcolor {
+    background-color: #6f42c1;
+    } */
 </style>
