@@ -12,7 +12,7 @@ const getters = {
 
 // actions
 const actions = {
-  getVideo({ commit, state }, video) {
+  getVideo({ commit }, video) {
     commit('setVideo', video);
   }  
 }
