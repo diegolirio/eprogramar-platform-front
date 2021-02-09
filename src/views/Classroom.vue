@@ -3,7 +3,19 @@
     <div>
         <AppBar :navigate="navigate" :course="currentCourse" />                
         
-        <v-main >            
+        <v-main >         
+              <v-col cols="12"  v-if="loading">
+                <v-progress-linear
+                  indeterminate
+                  rounded
+                  :active="loading"
+                  background-opacity="0.42"
+                  buffer-value="100"
+                  height="7"
+                  value="0"
+                  color="light-blue"
+                ></v-progress-linear>
+              </v-col>                       
               <v-btn style="width: 50%;" color="secondary">
                   <v-icon style="margin-right: 10px;">mdi-reply</v-icon> Voltar
               </v-btn>    
@@ -37,6 +49,7 @@ export default {
     AppBar
   },
   data:() => ({
+      loading: true,
       courseId: '',
       currentCourse: {},
       currentSection: {},
@@ -52,6 +65,7 @@ export default {
     this.courseId = this.$route.query.courseId 
     this.getCourse(this.courseId);
     this.getMovieId(this.$route.query.currentMovie);
+    this.loading = false;
   },  
   methods: {
     getMovieId(path) {

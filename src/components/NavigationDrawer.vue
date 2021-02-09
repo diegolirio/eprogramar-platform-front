@@ -4,11 +4,6 @@
       width="400"
       app
     >      
-            <!-- <h1 align="center"> 
-                Curso de Kotlin 
-            </h1> -->
-            
-            
 
             <v-card
                 outlined
@@ -57,16 +52,17 @@
 
                         <v-list-item
                             v-for="sc in s.contents" :key="sc.id"
+                            v-on:click.prevent="setSectionContent(sectionContent)"
                         >
 
                             <v-list-item-icon>
-                            <v-icon>
-                                mdi-play
-                            </v-icon>
+                                <v-icon>
+                                    mdi-play
+                                </v-icon>
                             </v-list-item-icon>
 
                             <v-list-item-content>
-                            <v-list-item-title v-text="sc.description"></v-list-item-title>
+                                <v-list-item-title v-text="sc.description"></v-list-item-title>
                             </v-list-item-content>
                             
                         </v-list-item>
@@ -81,26 +77,20 @@
   export default {
     props: ['drawer', 'course'],
     data: () => ({
-      recent: [
-        {
-          active: true,
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-          title: 'Jason Oner',
+      
+    }),
+    methods: {
+        setModule(event) {
+            let currentSection = this.currentCourse.sections.filter(s => s._id === event.target.value)[0];
+            this.$store.commit("sectionStore/setSection", currentSection);
+            this.sectionContentCurrent = currentSection.contents[0];
         },
-        {
-          active: true,
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-          title: 'Mike Carlson',
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-          title: 'Cindy Baker',
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-          title: 'Ali Connors',
-        },
-      ],
-    })
+        setSectionContent(sectionContent) {
+            this.sectionContentCurrent = sectionContent;
+            const splited = sectionContent.value.split('/');      
+            let videoId = splited[splited.length-1];
+            this.$store.commit("videoStore/setVideo", videoId);
+        }        
+    }
   }
 </script>
