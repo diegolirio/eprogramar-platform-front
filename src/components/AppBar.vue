@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationDrawer :drawer="drawer" v-if="navigate" />
+    <NavigationDrawer :drawer="drawer" v-if="navigate" :course="course" />
     <v-app-bar
       app
       flat
@@ -71,7 +71,7 @@
   import NavigationDrawer from './NavigationDrawer'
   import storage from '../services/storage'
   export default {
-    props: ['navigate'],
+    props: ['navigate', 'course'],
     components: {
         NavigationDrawer
     },

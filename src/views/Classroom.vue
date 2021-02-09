@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <AppBar :navigate="navigate" />                
+        <AppBar :navigate="navigate" :course="currentCourse" />                
         
         <v-main >            
               <v-btn style="width: 50%;" color="secondary">
@@ -13,7 +13,7 @@
 
               <div class="video-container">
                   
-                  <iframe src="https://www.youtube.com/embed/qaixOjsOX6s"
+                  <iframe :src="video"
                           allowfullscreen="true" 
                           webkitallowfullscreen="true" 
                           mozallowfullscreen="true" >
@@ -27,18 +27,54 @@
 
 <script>
 import AppBar from '../components/AppBar';
+import storage from "../services/storage";
+import Course from '../services/course';
+import { mapGetters } from "vuex";
 export default {
   
-  name: 'Home',
+  name: "Classroom",
   components: {
     AppBar
   },
   data:() => ({
-
+      courseId: '',
+      currentCourse: {},
+      currentSection: {},
+      userName: '',
+      userEmail: '',
   }),
   beforeMount() {
     this.navigate = true; 
-  }
+  },
+  created() {
+    this.userEmail = storage.getCurrentUser();
+    this.userName = storage.getCurrentUserName();
+    this.courseId = this.$route.query.courseId 
+    this.getCourse(this.courseId);
+    this.getMovieId(this.$route.query.currentMovie);
+  },  
+  methods: {
+    getMovieId(path) {
+      const splited = path.split('/');      
+      let videoId = splited[splited.length-1];
+      this.$store.commit("videoStore/setVideo", videoId);
+      return videoId;
+    },
+    getCourse(id) {
+     Course.getCoursesById(id).then(response => {
+       this.currentCourse = response.data;
+       this.$store.commit('sectionStore/setSection', this.currentCourse.sections[0]); 
+     });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      video: "videoStore/video",
+      section: "sectionStore/section",
+    })
+  }, 
+  mounted: {    
+  } 
 }
 </script>
 <style scoped>
@@ -47,8 +83,7 @@ export default {
   position: relative;
   padding-bottom: 50%; /* 16:9 */
   height: 0;
-  border: 1px solid #c3c3c3;
-
+  background-color: black;
 }
 
 iframe {
