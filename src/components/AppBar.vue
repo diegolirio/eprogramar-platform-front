@@ -52,8 +52,23 @@
                             </v-row>
                         </router-link>
 
+                        <div style="cursor: pointer;" @click="setThemeDark(!themeDark)">      
+                            <v-list-item>
+                                <v-list-item-content
+                                ><v-list-item-title class="font-weight-bold">
+                                    Dark Mode</v-list-item-title
+                                >
+                                </v-list-item-content>
+                                <v-list-item-action
+                                ><v-switch v-model="$vuetify.theme.dark" />
+                                </v-list-item-action>
+                            </v-list-item>
+                            <v-divider />                                                 
+                        </div>
+
+                       
+
                         <div style="cursor: pointer;" @click="logout">                           
-                            <v-divider class="my-1"></v-divider>
                             <v-col cols="12" class="font-weight-medium">
                                 Sair
                             </v-col>
@@ -82,8 +97,12 @@
         },
         getCurrentUserName() {
             return storage.getCurrentUserName();
+        },
+        setThemeDark(isDark) {
+            this.themeDark = isDark;
+            this.$vuetify.theme.dark = this.themeDark;
         }
     },     
-    data: () => ({ drawer: null }),
+    data: () => ({ drawer: null, themeDark: this.$vuetify.theme.dark }),
   }
 </script>
