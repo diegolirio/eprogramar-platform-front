@@ -101,6 +101,7 @@
               <v-col
                 v-for="course in this.courses" :key="course.id"
                 cols="12" xs="12" sm="6" md="4" lg="4" xl="4"
+                style="margin-top: -20px;"
               >
                 <CardCourse
                   v-on:play-course="playCourse"
