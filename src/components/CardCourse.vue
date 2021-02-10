@@ -29,6 +29,14 @@
 
 </template>
 
+<script>
+export default {
+  name: "CardCourse",
+  components: {},
+  props: ['tumbnail', 'name', '_id', 'loading' ],
+};
+</script>
+
 <style lang="scss" scoped>
 %truncate_placeholder {
   overflow: hidden;
@@ -81,11 +89,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  name: "CardCourse",
-  components: {},
-  props: ['tumbnail', 'name', '_id', 'loading' ],
-};
-</script>

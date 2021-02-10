@@ -1,6 +1,9 @@
 <template>
   <div>
-    <NavigationDrawer :drawer="drawer" v-if="navigate" :course="course" />
+    <NavigationDrawer 
+        :drawer="drawer" 
+        v-if="navigate" 
+        :course="course" />
     <v-app-bar
       app
       flat
@@ -92,7 +95,7 @@
     },
     methods: {
         logout() {
-            localStorage.clear();
+            storage.logout();
             this.$router.push('/login');
         },
         getCurrentUserName() {

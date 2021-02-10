@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <AppBar :navigate="navigate" :course="currentCourse" />                
+        <AppBar :navigate="isNavigationDrawer" :course="currentCourse" />                
         
         <v-main >         
               <v-col cols="12"  v-if="loading">
@@ -57,7 +57,7 @@ export default {
       userEmail: '',
   }),
   beforeMount() {
-    this.navigate = true; 
+    this.isNavigationDrawer = true; 
   },
   created() {
     this.userEmail = storage.getCurrentUser();

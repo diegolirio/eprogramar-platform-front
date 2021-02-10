@@ -52,9 +52,9 @@
 
                         <v-list-item
                             v-for="sc in s.contents" :key="sc.id"
-                            v-on:click.prevent="setSectionContent(sectionContent)"
+                            v-on:click.prevent="setSectionContent(sc)"
                         >
-
+ 
                             <v-list-item-icon>
                                 <v-icon>
                                     mdi-play
@@ -62,7 +62,7 @@
                             </v-list-item-icon>
 
                             <v-list-item-content>
-                                <v-list-item-title v-text="sc.description"></v-list-item-title>
+                                <v-list-item-subtitle v-text="`${sc.description}`"></v-list-item-subtitle>
                             </v-list-item-content>
                             
                         </v-list-item>

@@ -41,7 +41,9 @@ export default {
     return localStorage.getItem(CURRENT_USER_NAME_KEY) !== null;
   },
   logout: () => {
-    localStorage.clear();
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(CURRENT_USER_NAME_KEY);
+    localStorage.removeItem(CURRENT_USER_EMAIL_KEY);
   },
   setThemeDark(isDark) {
     localStorage.setItem(THEME_DARK, isDark);    
