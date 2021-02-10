@@ -99,6 +99,7 @@
             return storage.getCurrentUserName();
         },
         setThemeDark(isDark) {
+            storage.setThemeDark(isDark);
             this.themeDark = isDark;
             this.$vuetify.theme.dark = this.themeDark;
         }

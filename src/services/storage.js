@@ -2,6 +2,7 @@ const TOKEN_KEY = 'TOKEN';
 const CURRENT_USER_NAME_KEY = 'CURRENT_USER_NAME';
 const CURRENT_USER_EMAIL_KEY = 'CURRENT_USER_EMAIL';
 const PROFILE = 'PROFILE';
+const THEME_DARK = 'THEME_DARK';
 
 export default {
   getToken: () => {
@@ -42,4 +43,10 @@ export default {
   logout: () => {
     localStorage.clear();
   },
+  setThemeDark(isDark) {
+    localStorage.setItem(THEME_DARK, isDark);    
+  },
+  getThemeDark() {
+    localStorage.getItem(THEME_DARK);    
+  }  
 };
