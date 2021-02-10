@@ -1,33 +1,5 @@
 <template>
-
-  <!-- <div class="card border-primary">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img :src="tumbnail" class="card-img card__image" alt="Curso" />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body text-left">
-          <h5 class="card-title card__title">{{ name }}</h5>
-          <p class="card-text card__text">
-            This is a wider asdfsdfas dfasdfasdfsdfasd fafds sdfgdfg sdfgsdfg
-            sdsdfg.
-          </p>
-
-          <a
-            v-on:click="$emit('play-course', _id)"
-            class="btn btn-success card__button"
-          >
-            <i class="fas fa-play mr-1"></i>
-            Assistir Curso
-          </a>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <v-card
-
-  >
+  <v-card>
     <v-img
       :src="tumbnail"
       height="200px"

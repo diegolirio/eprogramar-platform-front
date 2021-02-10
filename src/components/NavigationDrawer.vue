@@ -1,7 +1,7 @@
 <template>
     <v-navigation-drawer
       v-model="drawer"
-      width="400"
+      width="300"
       app
     >      
 
@@ -13,7 +13,7 @@
 
                     <v-card-actions>
                             <v-btn icon xsmall 
-                                :to="{ 'path': '/'}"
+                                @click="drawer = !drawer"
                             > 
                                 <v-icon color="blue-grey darken-1">mdi-arrow-left</v-icon>
                             </v-btn>
@@ -23,18 +23,18 @@
                         <!-- <div class="overline mb-4">
                         OVERLINE
                         </div> -->
-                        <v-list-item-title class="headline mb-1">
+                        <v-list-item-subtitle class="headline mb-1">
                             {{course.name}}
-                        </v-list-item-title>
+                        </v-list-item-subtitle>
                     </v-list-item-content>
 
-                    <v-list-item-avatar
+                    <!-- <v-list-item-avatar
                         tile
                         size="80"
                         color="grey"
                     >
                         <v-img :aspect-ratio="16/8" :src="course.tumbnail"></v-img>                    
-                    </v-list-item-avatar>
+                    </v-list-item-avatar> -->
                 </v-list-item>
 
             </v-card>            
