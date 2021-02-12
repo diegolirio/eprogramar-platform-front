@@ -53,9 +53,11 @@
                                     </div>
                                 </v-col>
                             </v-row>
+                            <br />
                         </router-link>
 
                         <div style="cursor: pointer;" @click="setThemeDark(!themeDark)">      
+                            <v-divider />                                                 
                             <v-list-item>
                                 <v-list-item-content
                                 ><v-list-item-title class="font-weight-bold">
@@ -66,12 +68,20 @@
                                 ><v-switch v-model="$vuetify.theme.dark" />
                                 </v-list-item-action>
                             </v-list-item>
-                            <v-divider />                                                 
                         </div>
 
+                        <div style="cursor: pointer;">       
+                            <v-divider />                                                                     
+                            <v-col cols="12" class="font-weight-medium">
+                                <router-link to="/" style="color: inherit; text-decoration: none">
+                                    Meus Cursos
+                                </router-link>
+                            </v-col>
+                        </div>
                        
 
-                        <div style="cursor: pointer;" @click="logout">                           
+                        <div style="cursor: pointer;" @click="logout">       
+                            <v-divider />                                                                     
                             <v-col cols="12" class="font-weight-medium">
                                 Sair
                             </v-col>
