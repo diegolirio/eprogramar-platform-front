@@ -49,6 +49,8 @@
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
                     
+                    <!-- https://v15.vuetifyjs.com/pt-BR/components/lists/#action-with-title-and-sub-title -->
+
                     <v-list>
                         <v-list-item-group
                             active-class="border"
