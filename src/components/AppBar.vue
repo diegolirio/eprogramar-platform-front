@@ -79,6 +79,14 @@
                             </v-col>
                         </div>
                        
+                        <!-- <div style="cursor: pointer;">       
+                            <v-divider />                                                                     
+                            <v-col cols="12" class="font-weight-medium">
+                                <router-link to="/" style="color: inherit; text-decoration: none">
+                                    Sobre
+                                </router-link>
+                            </v-col>
+                        </div>                        -->
 
                         <div style="cursor: pointer;" @click="logout">       
                             <v-divider />                                                                     

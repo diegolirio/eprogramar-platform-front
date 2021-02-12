@@ -48,25 +48,30 @@
                     <span >{{ s.name }} </span>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
-                        <v-list subheader>
-
-                        <v-list-item
-                            v-for="sc in s.contents" :key="sc.id"
-                            v-on:click.prevent="setSectionContent(sc)"
+                    
+                    <v-list>
+                        <v-list-item-group
+                            active-class="border"
+                            color="indigo"
                         >
- 
-                            <v-list-item-icon>
-                                <v-icon :class="{ 'green--text': !sc.performed }">
-                                    {{ sc.performed ? 'mdi-play' : 'mdi-check-bold' }} 
-                                </v-icon>
-                            </v-list-item-icon>
+                            <v-list-item
+                                v-for="sc in s.contents"
+                                :key="sc.id"
+                                v-on:click.prevent="setSectionContent(sc)"
+                            >
+                                <v-list-item-icon>
+                                    <v-icon :class="{ 'green--text': !sc.performed }">
+                                        {{ sc.performed ? 'mdi-play' : 'mdi-check-bold' }} 
+                                    </v-icon>
+                                </v-list-item-icon>
 
-                            <v-list-item-content>
-                                <v-list-item-subtitle :class="{ 'green--text': !sc.performed }" v-text="`${sc.description}`"></v-list-item-subtitle>
-                            </v-list-item-content>
-                            
-                        </v-list-item>
-                        </v-list>          
+                                <v-list-item-content>
+                                    <v-list-item-subtitle :class="{ 'green--text': !sc.performed }" v-text="`${sc.description}`"></v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+                        </v-list-item-group>
+                    </v-list>
+
                 </v-expansion-panel-content>
                 </v-expansion-panel>
             </v-expansion-panels>
