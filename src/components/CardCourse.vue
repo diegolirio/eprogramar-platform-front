@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="rounded-lg">
     <v-img
       :src="tumbnail"
       height="200px"

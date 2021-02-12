@@ -15,11 +15,12 @@
                   value="0"
                   color="light-blue"
                 ></v-progress-linear>
-              </v-col>                       
-              <v-btn style="width: 50%;" color="secondary">
+              </v-col>                 
+
+              <v-btn style="width: 50%;" color="secondary" x-large>
                   <v-icon style="margin-right: 10px;">mdi-reply</v-icon> Voltar
               </v-btn>    
-              <v-btn style="width: 50%;" color="success">
+              <v-btn style="width: 50%;" color="success" x-large>
                   <v-icon style="margin-right: 10px;">mdi-check</v-icon> Concluido
               </v-btn>
 

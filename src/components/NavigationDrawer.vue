@@ -45,7 +45,7 @@
                 :key="s._id"
                 >
                 <v-expansion-panel-header>
-                    {{ s.name }}
+                    <span >{{ s.name }} </span>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
                         <v-list subheader>
@@ -56,13 +56,13 @@
                         >
  
                             <v-list-item-icon>
-                                <v-icon>
-                                    mdi-play
+                                <v-icon :class="{ 'green--text': !sc.performed }">
+                                    {{ sc.performed ? 'mdi-play' : 'mdi-check-bold' }} 
                                 </v-icon>
                             </v-list-item-icon>
 
                             <v-list-item-content>
-                                <v-list-item-subtitle v-text="`${sc.description}`"></v-list-item-subtitle>
+                                <v-list-item-subtitle :class="{ 'green--text': !sc.performed }" v-text="`${sc.description}`"></v-list-item-subtitle>
                             </v-list-item-content>
                             
                         </v-list-item>
@@ -90,7 +90,17 @@
             const splited = sectionContent.value.split('/');      
             let videoId = splited[splited.length-1];
             this.$store.commit("videoStore/setVideo", videoId);
-        }        
+            if(this.isMobile()) {
+                this.drawer = false;
+            }
+        },
+        isMobile() {
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                return true
+            } else {
+                return false
+            }
+        }
     }
   }
 </script>
