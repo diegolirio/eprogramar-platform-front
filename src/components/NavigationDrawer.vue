@@ -1,10 +1,9 @@
 <template>
     <v-navigation-drawer
       v-model="drawer"
-      width="400"
+      :width="isMobile() ? '90%' : '400'" 
       app
     >      
-
             <v-card
                 outlined
             >
